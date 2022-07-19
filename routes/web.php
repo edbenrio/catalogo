@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('brands', App\Http\Controllers\BrandController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
