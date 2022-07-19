@@ -19,10 +19,6 @@ class CreateCategoriesTable extends Migration
             $table->string('nombre');
             $table->string('img_url')->nullable();
 
-            //fk Product
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-
             $table->softDeletes();
             $table->timestamps();
         });
