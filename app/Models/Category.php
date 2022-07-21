@@ -16,7 +16,7 @@ class Category extends Model
         'img_url',
     ];
 
-    public function product(){
+    public function products(){
         return $this->belongsToMany('App\Models\Product');
     }
 }

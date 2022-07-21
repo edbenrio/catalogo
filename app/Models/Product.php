@@ -23,7 +23,7 @@ class Product extends Model
         return $this->hasOne('App\Models\Brand');
     }
 
-    public function category(){
+    public function categories(){
         return $this->belongsToMany('App\Models\Category');
     }
     
