@@ -15,4 +15,8 @@ class Brand extends Model
         'img_url',
     ];
     use HasFactory;
+
+    public function products(){
+        return $this->belongsTo('App\Models\Product');
+    }
 }
