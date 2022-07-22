@@ -3,14 +3,17 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import Vuetify from 'vuetify'
-import Vue from 'vue'
+import Vuetify from "vuetify";
+import Vue from "vue";
 
-require('./bootstrap');
+import router from "./routes/routes";
+import store from "./store";
+
+require("./bootstrap");
+
+window.Vue = require("vue").default;
 
 Vue.use(Vuetify);
-
-window.Vue = require('vue').default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,7 +26,7 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component("main-content", require("./App.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +35,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app",
+    router: router,
+    store: store,
     vuetify: new Vuetify(),
 });
