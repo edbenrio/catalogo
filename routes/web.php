@@ -18,10 +18,14 @@ Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('product_details', App\Http\Controllers\ProductDetailController::class);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+    
+    Route::get('/{vuerouter}', function () {
+        return view('welcome');
+    })->where( "vuerouter",  ".*");
+});
