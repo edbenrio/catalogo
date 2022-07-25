@@ -17,6 +17,6 @@ class Brand extends Model
     use HasFactory;
 
     public function products(){
-        return $this->belongsTo('App\Models\Product');
+        return $this->hasOne('App\Models\Product');
     }
 }

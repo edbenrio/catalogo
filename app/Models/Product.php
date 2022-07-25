@@ -20,7 +20,7 @@ class Product extends Model
     ];
 
     public function brand(){
-        return $this->hasOne('App\Models\Brand');
+        return $this->belongsTo('App\Models\Brand');
     }
 
     public function categories(){
