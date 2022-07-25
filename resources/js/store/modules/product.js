@@ -23,7 +23,13 @@ const state = {
             width: "150px",
         },
         { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
-        { text: "Metodo", value: "metodo", sortable: false, width: "150px" },
+        { text: "Venta", value: "venta", sortable: false, width: "150px" },
+        {
+            text: "Alquiler",
+            value: "alquiler",
+            sortable: false,
+            width: "150px",
+        },
         { text: "Marca", value: "brand_id", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],
@@ -55,6 +61,7 @@ const actions = {
         axios
             .post("/products", params)
             .then((response) => {
+                console.log(response);
                 commit("CREATE_PRODUCT", params);
             })
             .then(() => {

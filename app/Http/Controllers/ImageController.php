@@ -35,7 +35,21 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        $ruta='images'. parse_url($request->header('referer'), PHP_URL_PATH) .'/'; 
+        $path = public_path('tmp/uploads');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('image');
+
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+
+        $file->move($path, $name);
+
+        return ['name'=>$name];
+
+        /*$ruta='images'. parse_url($request->header('referer'), PHP_URL_PATH) .'/'; 
         if ($request->hasFile('image')) {
             $img = $request->file('image');
 
@@ -50,6 +64,21 @@ class ImageController extends Controller
             $image->img_url = $path;
 
             //return $path;
+        }*/
+    }
+
+    public function storeImage(Request $request){
+        $ruta='images'. parse_url($request->header('referer'), PHP_URL_PATH) .'/'; 
+        if ($request->hasFile('image')) {
+            $img = $request->file('image');
+
+            $filename = uniqid().'.'.$img->getClientOriginalExtension();
+            $img->move(public_path($ruta), $filename);
+
+            $path = $ruta. $filename;
+            return $path;
+        }else{
+            abort(response('No hay archivo de Imagen',500));        
         }
     }
 
