@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id','category_id')->with('category:id,nombre', 'brand:id,nombre')->get();
+        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id')->with( 'brand:id,nombre')->get();
         return $product;
     }
 
@@ -51,9 +51,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::select('products.id', 'products.nombre', 'codigo', 'products.descripcion', 'brands.nombre as marca','categories.nombre as categoria')
+        $product = Product::select('products.id', 'products.nombre', 'codigo', 'products.descripcion', 'brands.nombre as marca')
             ->join('brands','brands.id','products.brand_id')
-            ->join('categories' ,'products.category_id' ,'categories.id')
+            
             ->find($id);
         return $product;
     }
