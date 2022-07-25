@@ -24,7 +24,7 @@ const state = {
         },
         { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
         { text: "Metodo", value: "metodo", sortable: false, width: "150px" },
-        { text: "Marca", value: "marca", sortable: false, width: "150px" },
+        { text: "Marca", value: "brand_id", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],
 };

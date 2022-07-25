@@ -20,7 +20,6 @@
             </template>
             <template v-slot:[`item.actions`]="{ item }">
                 <v-icon
-                    v-if="canEdit"
                     small
                     class="mr-2"
                     color="blue"
@@ -33,7 +32,6 @@
                     mdi-pencil
                 </v-icon>
                 <v-icon
-                    v-if="canDelete"
                     small
                     color="red"
                     @click="

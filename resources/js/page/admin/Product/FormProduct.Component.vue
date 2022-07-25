@@ -189,6 +189,7 @@ export default {
         //resetea validacion, obtiene las listas marca, borra los campos nombre url
         validateSubmit(edit, item) {
             this.product.img_url = this.img;
+            console.log(item);
 
             if (this.$refs.form.validate()) {
                 if (edit) {
