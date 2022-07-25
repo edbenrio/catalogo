@@ -1,8 +1,7 @@
 <template>
     <div>
-        Hola imagenes
-
-        <upload-media server="/api/upload"> </upload-media>
+        <strong>Imagenes</strong>
+        <upload-media server="/image"> </upload-media>
     </div>
 </template>
 

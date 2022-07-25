@@ -12,8 +12,20 @@
                 <v-toolbar flat>
                     <v-toolbar-title class="mt-1">MARCA</v-toolbar-title>
                     <v-divider class="mx-5" vertical></v-divider>
+                    <v-text-field
+                        v-model="search"
+                        append-icon="mdi-magnify"
+                        label="Search"
+                        single-line
+                        hide-details
+                    ></v-text-field>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" dark class="mb-2" @click="setDialog">
+                    <v-btn
+                        color="primary"
+                        dark
+                        class="mb-2 ml-2"
+                        @click="setDialog"
+                    >
                         AGREGAR
                     </v-btn>
                 </v-toolbar>
@@ -47,12 +59,19 @@
             </template>
         </v-data-table>
         <form-marca />
+        <delete-dialog
+            :dialog="deleteDialog"
+            :setDialog="setDeleteDialog"
+            v-on:deleted="deleteBrand(localBrand)"
+        />
     </v-card>
 </template>
 
 <script>
 import { mapMutations, mapState, mapActions } from "vuex";
 import FormMarca from "./FormMarca.Component.vue";
+import DeleteDialog from "../../../components/DeleteItem.Component.vue";
+
 export default {
     data: () => ({
         search: "",
@@ -64,6 +83,7 @@ export default {
     },
     components: {
         FormMarca,
+        DeleteDialog,
     },
     computed: {
         ...mapState("brand", [
@@ -77,7 +97,6 @@ export default {
         ...mapState("app", ["canCreate", "canEdit", "canDelete"]),
     },
     methods: {
-        ...mapMutations("brand", ["setDialog"]),
         ...mapActions("brand", ["getBrands", "deleteBrand"]),
         ...mapActions("app", ["getPermissions"]),
         ...mapMutations("brand", [
@@ -98,4 +117,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.theme--light.v-toolbar.v-sheet {
+    margin-bottom: 30px;
+}
+</style>

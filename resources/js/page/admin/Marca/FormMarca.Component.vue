@@ -2,7 +2,7 @@
     <v-form ref="form" v-model="valid" lazy-validation>
         <v-dialog v-model="dialog" @click:outside="setDialog">
             <v-card class="pa-5">
-                <v-card-title class="ml-n5"> Nuevo Marca </v-card-title>
+                <v-card-title class="ml-n5"> {{ formTitle }} </v-card-title>
 
                 <v-text-field
                     label="Nombre"

@@ -6,6 +6,8 @@ const state = {
     deleteDialog: false,
     isDeleted: false,
     brands: [],
+    brandForOther: {},
+    isBrandForOther: false,
     canCreate: false,
     canEdit: false,
     canDelete: false,
@@ -54,12 +56,12 @@ const actions = {
                     "app/setSnackbarSuccess",
                     "La marca guardo correctamente"
                 );
+
+                dispatch("getBrands");
             })
             .catch((error) => {
                 this.commit("app/setSnackbarAlert", error);
             });
-
-        await dispatch("getBrands");
     },
     async editBrand({ commit, dispatch, getters }, params) {
         //busca categoria anterior luego para borrar la imagen anterior
@@ -75,32 +77,31 @@ const actions = {
             );
         }
 
-        axios.put(`/brands/${params.id}`, params).then((response) => {
-            commit("EDIT_BRAND", params);
-            this.commit(
-                "app/setSnackbarSuccess",
-                "La marca editado correctamente"
-            );
-        });
-
-        await dispatch("getBrands");
+        axios
+            .put(`/brands/${params.id}`, params)
+            .then(() => {
+                commit("EDIT_BRAND");
+            })
+            .then(() => {
+                dispatch("getBrands");
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     },
     deleteBrand({ commit, dispatch }, params) {
         axios
             .delete(`/brands/${params.id}`)
             .then((response) => {
                 commit("DELETE_BRAND", params);
-                this.commit(
-                    "app/setSnackbarSuccess",
-                    "La marca eliminado correctamente"
-                );
+            })
+            .then(() => {
+                dispatch("getBrands");
             })
             .catch((error) => {
                 console.log(error.response.data);
                 alert(error.response.data);
             });
-
-        dispatch("getBrands");
     },
     async getPermissions({ commit }) {
         let permission = ["create", "edit", "delete"]; //lista de permisos
@@ -130,6 +131,9 @@ const actions = {
 //Metodos Brand
 const mutations = {
     setDialog(state) {
+        if (state.edit) {
+            state.edit = false;
+        }
         state.dialog = !state.dialog;
     },
     setEdit(state) {
@@ -138,6 +142,14 @@ const mutations = {
     setDeleteDialog(state) {
         state.deleteDialog = !state.deleteDialog;
     },
+
+    clearBrandForOther(state) {
+        state.brandForOther = {};
+        state.isBrandForOther = false;
+    },
+    setIsBrandForOther(state) {
+        state.isBrandForOther = true;
+    },
     setBrand(state, brand) {
         state.brand = brand;
     },
@@ -145,7 +157,7 @@ const mutations = {
         state.brand = {};
     },
     getEdit(state, item) {
-        state.brand = Object.create(item);
+        state.brand = Object.assign({}, item);
     },
     setImage(state, img) {
         state.img = img;
@@ -175,7 +187,14 @@ const mutations = {
     },
 };
 
-const getters = {};
+const getters = {
+    allBrands(state) {
+        return state.brands;
+    },
+    getBrandById: (state) => (id) => {
+        return state.brands.find((obj) => obj.id === id);
+    },
+};
 
 export default {
     namespaced: true,
