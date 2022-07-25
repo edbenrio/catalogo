@@ -22,8 +22,9 @@ Route::resource('product_details', App\Http\Controllers\ProductDetailController:
 Auth::routes();
 
 
+
 Route::middleware(['auth'])->group(function(){
-    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
     
     Route::get('/{vuerouter}', function () {
         return view('welcome');

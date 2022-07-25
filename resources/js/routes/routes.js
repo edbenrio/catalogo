@@ -1,6 +1,7 @@
 import Producto from "../page/admin/product/Producto.Component.vue";
+import Category from "../page/admin/category/Category.Component.vue";
 import Image from "../page/admin/image/Image.Component.vue";
-import Marca from "../page/admin/marca/Marca.Component.vue";
+import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
 
 import Vue from "vue";
@@ -27,6 +28,11 @@ const routes = [
                 path: "marca",
                 name: "marca",
                 component: Marca,
+            },
+            {
+                path: "category",
+                name: "categoria",
+                component: Category,
             },
         ],
     },
