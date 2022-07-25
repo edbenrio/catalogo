@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
-    
+    Route::post('/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
     Route::get('/{vuerouter}', function () {
         return view('welcome');
     })->where( "vuerouter",  ".*");
