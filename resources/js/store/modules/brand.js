@@ -6,8 +6,6 @@ const state = {
     deleteDialog: false,
     isDeleted: false,
     brands: [],
-    brandForOther: {},
-    isBrandForOther: false,
     canCreate: false,
     canEdit: false,
     canDelete: false,
@@ -143,25 +141,23 @@ const mutations = {
     setBrand(state, brand) {
         state.brand = brand;
     },
-    clearBrandForOther(state) {
-        state.brandForOther = {};
-        state.isBrandForOther = false;
-    },
-    setIsBrandForOther(state) {
-        state.isBrandForOther = true;
-    },
     clearBrand(state) {
         state.brand = {};
     },
-
+    getEdit(state, item) {
+        state.brand = Object.create(item);
+    },
     setImage(state, img) {
         state.img = img;
     },
-    getEdit(state, item) {
-        state.brand.nombre = item.nombre;
-        state.brand.img_url = item.img_url;
-        state.brand.id = item.id;
-        state.brand.user_id = item.user_id;
+    setcreate(state, access) {
+        state.canCreate = access;
+    },
+    setedit(state, access) {
+        state.canEdit = access;
+    },
+    setdelete(state, access) {
+        state.canDelete = access;
     },
     SET_BRANDS(state, brands) {
         state.brands = brands;
@@ -177,25 +173,9 @@ const mutations = {
         state.delete = false;
         state.isDeleted = false;
     },
-    setcreate(state, access) {
-        state.canCreate = access;
-    },
-    setedit(state, access) {
-        state.canEdit = access;
-    },
-    setdelete(state, access) {
-        state.canDelete = access;
-    },
 };
 
-const getters = {
-    allBrands(state) {
-        return state.brands;
-    },
-    getBrandById: (state) => (id) => {
-        return state.brands.find((obj) => obj.id === id);
-    },
-};
+const getters = {};
 
 export default {
     namespaced: true,
