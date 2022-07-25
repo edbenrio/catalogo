@@ -16,7 +16,10 @@ class Product extends Model
         'nombre',
         'descripcion',
         'venta',
-        'alquiler'        
+        'alquiler',
+        'codigo',
+        'brand_id',
+        'category_id'        
     ];
 
     public function brand(){
