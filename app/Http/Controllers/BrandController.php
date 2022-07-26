@@ -72,7 +72,7 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brand)
+    public function update(Request $request, $id)
     {
         $brand = Brand::find($id);
         $data = $request->only($brand->getFillable());        
