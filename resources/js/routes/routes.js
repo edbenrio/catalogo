@@ -4,6 +4,7 @@ import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
 import Home from "../home/Home.vue";
+import listProduct from "../market/ListProduct.component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -41,6 +42,10 @@ const routes = [
         path: "/home",
         component: Home,
     },
+    {
+        path: "/listproducts",
+        component: listProduct,
+    }
 ];
 
 export default new VueRouter({

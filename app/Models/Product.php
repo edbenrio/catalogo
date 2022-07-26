@@ -18,6 +18,7 @@ class Product extends Model
         'venta',
         'alquiler',
         'codigo',
+        'precio',
         'brand_id',
         'category_id'        
     ];

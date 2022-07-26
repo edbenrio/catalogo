@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('descripcion');
             $table->boolean('venta')->nullable();
             $table->boolean('alquiler')->nullable();
+            $table->float('precio',10,2)->nullable();
 
             //fk Brand
             //$table->unsignedBigInteger('brand_id');
