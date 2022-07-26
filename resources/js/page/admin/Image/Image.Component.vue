@@ -14,14 +14,12 @@ export default {
         UploadMedia,
         UpdateMedia,
     },
-    data: () => ({
-
-    }),
-    methods:{
-        llamar(){
+    data: () => ({}),
+    methods: {
+        llamar() {
             console.log(this.$refs.getImages.media);
-        }
-    }
+        },
+    },
 };
 </script>
 
