@@ -157,7 +157,6 @@ const mutations = {
     addNewProdcutDetail(state, item) {
         state.product_details.push(item);
         state.product_detail = {};
-        console.log(state.product_details);
     },
     deleteProductDetail(state, index) {
         state.product_details.splice(index, 1);
@@ -167,9 +166,6 @@ const mutations = {
 const getters = {
     getProductById: (state) => (id) => {
         return state.products.find((obj) => obj.id === id);
-    },
-    getLengthProductDetails: (state) => () => {
-        return state.product_details.length;
     },
 };
 
