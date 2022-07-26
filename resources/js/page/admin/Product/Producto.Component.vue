@@ -26,7 +26,7 @@
                     @click="
                         setDialog();
                         setEdit();
-                        getEdit(item);
+                        setProduct(item);
                     "
                 >
                     mdi-pencil
