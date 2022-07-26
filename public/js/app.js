@@ -5299,7 +5299,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    onFileChange: function onFileChange(payload) {
+      var file = payload; //obtener datos de la variable
+
+      if (file) {
+        this.showImg = URL.createObjectURL(file); //guardar solo la ruta guardada
+
+        URL.revokeObjectURL(file); // liberar memoria
+
+        this.saveImage(file); //guardar imagen
+      } else {
+        this.setImage(null);
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -27953,14 +28019,132 @@ var render = function () {
             [
               _c(
                 "v-row",
-                _vm._l(24, function (n) {
-                  return _c(
+                [
+                  _c(
                     "v-col",
-                    { key: n, attrs: { cols: "4" } },
-                    [_c("v-card", { attrs: { height: "200" } })],
+                    {
+                      staticClass: "d-flex align-end",
+                      attrs: { cols: "12", sm: "8", md: "8" },
+                    },
+                    [
+                      _c("v-file-input", {
+                        attrs: {
+                          accept: "image/*",
+                          label: "Selccionar Imagen",
+                          "show-size": "",
+                          counter: "",
+                          clearable: "",
+                        },
+                        on: { change: _vm.onFileChange },
+                        model: {
+                          value: _vm.filename,
+                          callback: function ($$v) {
+                            _vm.filename = $$v
+                          },
+                          expression: "filename",
+                        },
+                      }),
+                    ],
                     1
-                  )
-                }),
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-col",
+                    {
+                      staticClass: "d-flex align-end mb-5",
+                      attrs: { cols: "12", sm: "4", md: "4" },
+                    },
+                    [
+                      _c(
+                        "v-sheet",
+                        { staticClass: "rounded", attrs: { elevation: "2" } },
+                        [
+                          _vm.showImg
+                            ? _c(
+                                "v-img",
+                                {
+                                  staticClass:
+                                    "rounded text-center align-end pa-1",
+                                  attrs: {
+                                    src: _vm.showImg,
+                                    height: "150",
+                                    width: "120",
+                                    "aspect-ratio": "2",
+                                    contain: "",
+                                  },
+                                },
+                                [
+                                  _c(
+                                    "v-tooltip",
+                                    {
+                                      attrs: { bottom: "" },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "activator",
+                                            fn: function (ref) {
+                                              var on = ref.on
+                                              var attrs = ref.attrs
+                                              return [
+                                                _c(
+                                                  "v-fab-transition",
+                                                  [
+                                                    _c(
+                                                      "v-btn",
+                                                      _vm._g(
+                                                        _vm._b(
+                                                          {
+                                                            attrs: {
+                                                              "x-small": "",
+                                                              dark: "",
+                                                              bottom: "",
+                                                              color: "red",
+                                                            },
+                                                            on: {
+                                                              click:
+                                                                _vm.resetImage,
+                                                            },
+                                                          },
+                                                          "v-btn",
+                                                          attrs,
+                                                          false
+                                                        ),
+                                                        on
+                                                      ),
+                                                      [
+                                                        _vm._v(
+                                                          "Eliminar\n                                  "
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ],
+                                                  1
+                                                ),
+                                              ]
+                                            },
+                                          },
+                                        ],
+                                        null,
+                                        false,
+                                        965935416
+                                      ),
+                                    },
+                                    [
+                                      _vm._v(" "),
+                                      _c("span", [_vm._v("Eliminar Imagen")]),
+                                    ]
+                                  ),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
                 1
               ),
             ],

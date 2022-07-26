@@ -5,38 +5,45 @@ const state = {
     edit: false,
     deleteDialog: false,
     isDeleted: false,
-    brands: [],
-    brandForOther: {},
-    isBrandForOther: false,
+    products: [],
+    product: {},
     canCreate: false,
     canEdit: false,
     canDelete: false,
-    img: "",
-    brand: {
-        id: "",
-        nombre: "",
-        img_url: "",
-        user_id: "",
+    product: {
+        venta: 0,
+        alquiler: 0,
     },
     headers: [
+        { text: "Nombre", value: "nombre", sortable: true, width: "150px" },
         {
-            text: "Nombre",
-            align: "start",
-            value: "nombre",
+            text: "Descripcio",
+            value: "descripcion",
+            sortable: false,
+            width: "150px",
         },
-        { text: "Imagen", value: "img_url", sortable: false },
+        { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
+        { text: "Metodo", value: "metodo", sortable: false, width: "150px" },
+        { text: "Marca", value: "marca", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],
 };
 
 //Acciones Brand
 const actions = {
-    getBrands({ commit }) {
-        axios.get("/brands").then((response) => {
-            commit("SET_BRANDS", response.data);
-        });
+    getProducts({ commit }) {
+        axios
+            .get("/products")
+            .then((response) => {
+                commit("GET_PRODUCTS", response.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     },
-    async createBrand({ commit, state, dispatch }, params) {
+
+    async createProduct({ commit, dispatch }, params) {
+        //si existe imagen crea esa imagen sino pasa linea
         if (params.img_url) {
             await this.dispatch("image/createImage", params.img_url).then(
                 (res) => {
@@ -46,92 +53,62 @@ const actions = {
         }
 
         axios
-            .post("/brands", params)
+            .post("/products", params)
             .then((response) => {
-                if (state.isBrandForOther) state.brandForOther = response.data;
-                commit("CREATE_BRAND", params);
+                commit("CREATE_PRODUCT", params);
             })
             .then(() => {
-                this.commit(
-                    "app/setSnackbarSuccess",
-                    "La marca guardo correctamente"
-                );
-            })
-            .catch((error) => {
-                this.commit("app/setSnackbarAlert", error);
+                dispatch("getProducts");
+                commit("clearProduct");
             });
-
-        await dispatch("getBrands");
     },
-    async editBrand({ commit, dispatch, getters }, params) {
-        //busca categoria anterior luego para borrar la imagen anterior
-        let item = getters.getBrandById(params.id);
 
-        //creamos nueva imagen
+    async editProduct({ commit, dispatch, getters }, params) {
+        let item = getters.getProductById(params.id);
+
         if (params.img_url !== item.img_url) {
             await this.dispatch("image/createImage", params.img_url).then(
-                (response) => {
-                    params.img_url = response.data;
+                (res) => {
+                    params.img_url = res.data;
                     this.dispatch("image/editImage", item);
                 }
             );
         }
 
-        axios.put(`/brands/${params.id}`, params).then((response) => {
-            commit("EDIT_BRAND", params);
-            this.commit(
-                "app/setSnackbarSuccess",
-                "La marca editado correctamente"
-            );
+        await axios.put(`/products/${params.id}`, params).then((response) => {
+            commit("EDIT_PRODUCT", params);
         });
 
-        await dispatch("getBrands");
+        dispatch("getProducts");
+        commit("clearProduct");
     },
-    deleteBrand({ commit, dispatch }, params) {
+
+    deleteProduct({ commit }, params) {
         axios
-            .delete(`/brands/${params.id}`)
+            .delete(`/products/${params.id}`)
             .then((response) => {
-                commit("DELETE_BRAND", params);
-                this.commit(
-                    "app/setSnackbarSuccess",
-                    "La marca eliminado correctamente"
-                );
+                commit("DELETE_PRODUCT", params);
             })
             .catch((error) => {
                 console.log(error.response.data);
                 alert(error.response.data);
             });
-
-        dispatch("getBrands");
     },
-    async getPermissions({ commit }) {
-        let permission = ["create", "edit", "delete"]; //lista de permisos
-        let index = permission.length - 1;
-        while (index >= 0) {
-            //recorre el array de permisos
-            let hasAccess = false;
-            let url = "/brand_" + permission[index];
-            await axios
-                .get(`/permission${url}`)
-                .then((response) => {
-                    hasAccess = true;
-                })
-                .catch(() => {
-                    hasAccess = false;
-                });
-            commit("set" + permission[index], hasAccess);
-            index -= 1;
-        }
-        /* esta parte quita opciones del header */
-        if (!state.canDelete && !state.canEdit) {
-            state.headers.splice(2, 1);
-        }
+
+    getOneProduct({ commit }, params) {
+        axios.get(`/products/${params.id}`).then((response) => {
+            commit("GET_ONE_PRODUCT", params);
+        });
     },
 };
 
 //Metodos Brand
 const mutations = {
     setDialog(state) {
+        if (state.edit === true) {
+            state.edit = false;
+        }
+
         state.dialog = !state.dialog;
     },
     setEdit(state) {
@@ -140,60 +117,38 @@ const mutations = {
     setDeleteDialog(state) {
         state.deleteDialog = !state.deleteDialog;
     },
-    setBrand(state, brand) {
-        state.brand = brand;
+    setProduct(state, item) {
+        state.product = Object.assign({}, item);
     },
-    clearBrandForOther(state) {
-        state.brandForOther = {};
-        state.isBrandForOther = false;
+    clearProduct(state) {
+        state.product = {};
     },
-    setIsBrandForOther(state) {
-        state.isBrandForOther = true;
+    GET_PRODUCTS(state, products) {
+        state.products = products;
     },
-    clearBrand(state) {
-        state.brand = {};
+    GET_ONE_PRODUCT(state, product) {
+        state.product = product;
     },
-
-    setImage(state, img) {
-        state.img = img;
-    },
-    getEdit(state, item) {
-        state.brand.nombre = item.nombre;
-        state.brand.img_url = item.img_url;
-        state.brand.id = item.id;
-        state.brand.user_id = item.user_id;
-    },
-    SET_BRANDS(state, brands) {
-        state.brands = brands;
-    },
-    CREATE_BRAND(state) {
+    CREATE_PRODUCT(state) {
         state.dialog = false;
+        state.img = null;
     },
-    EDIT_BRAND(state) {
+    EDIT_PRODUCT(state) {
         state.dialog = false;
         state.edit = false;
+        state.img = null;
     },
-    DELETE_BRAND(state) {
+    DELETE_PRODUCT(state) {
         state.delete = false;
-        state.isDeleted = false;
     },
-    setcreate(state, access) {
-        state.canCreate = access;
-    },
-    setedit(state, access) {
-        state.canEdit = access;
-    },
-    setdelete(state, access) {
-        state.canDelete = access;
+    setImage(state, item) {
+        state.img = item;
     },
 };
 
 const getters = {
-    allBrands(state) {
-        return state.brands;
-    },
-    getBrandById: (state) => (id) => {
-        return state.brands.find((obj) => obj.id === id);
+    getProductById: (state) => (id) => {
+        return state.products.find((obj) => obj.id === id);
     },
 };
 

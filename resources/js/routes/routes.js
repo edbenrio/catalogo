@@ -2,6 +2,7 @@ import Producto from "../page/admin/product/Producto.Component.vue";
 import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/marca/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
+import Home from "../home/Home.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -29,6 +30,10 @@ const routes = [
                 component: Marca,
             },
         ],
+    },
+    {
+        path: "/home",
+        component: Home,
     },
 ];
 
