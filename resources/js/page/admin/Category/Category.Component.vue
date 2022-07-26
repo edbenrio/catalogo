@@ -5,12 +5,12 @@
             class="elevation-1 pa-2"
             height="100vh"
             :headers="headers"
-            :items="products"
+            :items="categories"
             :search="search"
         >
             <template v-slot:top>
                 <v-toolbar flat>
-                    <v-toolbar-title class="mt-1">PRODUCTO</v-toolbar-title>
+                    <v-toolbar-title class="mt-1">CATEGORIA</v-toolbar-title>
                     <v-divider class="mx-5" vertical></v-divider>
                     <v-spacer></v-spacer>
                     <v-btn color="primary" dark class="mb-2" @click="setDialog">
@@ -26,7 +26,7 @@
                     @click="
                         setDialog();
                         setEdit();
-                        setProduct(item);
+                        getEdit(item);
                     "
                 >
                     mdi-pencil
@@ -43,18 +43,18 @@
                 </v-icon>
             </template>
         </v-data-table>
-        <form-product />
+        <form-category />
         <delete-dialog
             :dialog="deleteDialog"
             :setDialog="setDeleteDialog"
-            v-on:deleted="deleteProduct(localItem)"
+            v-on:deleted="deleteCategory(localItem)"
         />
     </v-card>
 </template>
 
 <script>
 import { mapMutations, mapState, mapActions } from "vuex";
-import FormProduct from "./FormProduct.Component.vue";
+import FormCategory from "./FormCategory.Component.vue";
 import DeleteDialog from "../../../components/DeleteItem.Component.vue";
 
 export default {
@@ -63,16 +63,16 @@ export default {
         localItem: {},
     }),
     components: {
-        FormProduct,
+        FormCategory,
         DeleteDialog,
     },
     mounted() {
-        this.getProducts();
+        this.getCategories();
     },
     computed: {
-        ...mapState("product", [
-            "product",
-            "products",
+        ...mapState("category", [
+            "category",
+            "categories",
             "dialog",
             "headers",
             "edit",
@@ -81,15 +81,15 @@ export default {
         ]),
     },
     methods: {
-        ...mapMutations("product", [
+        ...mapMutations("category", [
             "setDialog",
             "setEdit",
             "getEdit",
-            "setProduct",
+            "setCategory",
             "setDeleteDialog",
-            "clearProduct",
+            "clearCategory",
         ]),
-        ...mapActions("product", ["getProducts", "deleteProduct"]),
+        ...mapActions("category", ["getCategories", "deleteCategory"]),
     },
 };
 </script>

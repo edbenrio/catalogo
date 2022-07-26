@@ -1,7 +1,7 @@
 <template>
     <div>
         <strong>Imagenes</strong>
-        <upload-media server="/image"> </upload-media>
+        <upload-media server="/create_image"> </upload-media>
     </div>
 </template>
 

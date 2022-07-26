@@ -23,8 +23,7 @@ const state = {
             width: "150px",
         },
         { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
-        { text: "Metodo", value: "metodo", sortable: false, width: "150px" },
-        { text: "Marca", value: "marca", sortable: false, width: "150px" },
+        { text: "Marca", value: "brand_id", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],
 };
@@ -55,6 +54,7 @@ const actions = {
         axios
             .post("/products", params)
             .then((response) => {
+                console.log(response);
                 commit("CREATE_PRODUCT", params);
             })
             .then(() => {
@@ -75,22 +75,30 @@ const actions = {
             );
         }
 
-        await axios.put(`/products/${params.id}`, params).then((response) => {
-            commit("EDIT_PRODUCT", params);
-        });
-
-        dispatch("getProducts");
-        commit("clearProduct");
+        await axios
+            .put(`/products/${params.id}`, params)
+            .then((response) => {
+                commit("EDIT_PRODUCT", params);
+            })
+            .then(() => {
+                dispatch("getProducts");
+                commit("clearProduct");
+            })
+            .catch((error) => {
+                alert(error.response.data);
+            });
     },
 
-    deleteProduct({ commit }, params) {
+    deleteProduct({ commit, dispatch }, params) {
         axios
             .delete(`/products/${params.id}`)
             .then((response) => {
                 commit("DELETE_PRODUCT", params);
             })
+            .then(() => {
+                dispatch("getProducts");
+            })
             .catch((error) => {
-                console.log(error.response.data);
                 alert(error.response.data);
             });
     },

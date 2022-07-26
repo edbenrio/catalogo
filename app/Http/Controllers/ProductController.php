@@ -51,7 +51,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::select('products.id', 'products.nombre', 'codigo', 'products.descripcion', 'brands.nombre as marca')
+        $product = Product::select('products.id', 'products.nombre', 'products.codigo', 'products.descripcion', 'brands.nombre as marca')
             ->join('brands','brands.id','products.brand_id')
             
             ->find($id);
