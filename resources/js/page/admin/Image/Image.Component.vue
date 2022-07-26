@@ -1,7 +1,8 @@
 <template>
     <div>
         <strong>Imagenes</strong>
-        <upload-media server="/image"> </upload-media>
+        <upload-media server="/image" ref="getImages"> </upload-media>
+        <v-btn @click="llamar">subir</v-btn>
     </div>
 </template>
 
@@ -13,6 +14,14 @@ export default {
         UploadMedia,
         UpdateMedia,
     },
+    data: () => ({
+
+    }),
+    methods:{
+        llamar(){
+            console.log(this.$refs.getImages.media);
+        }
+    }
 };
 </script>
 
