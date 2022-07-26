@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -40,6 +41,16 @@ class ProductController extends Controller
         $data = $request->only($product->getFillable());        
         $product->fill($data);
         $product->save(); 
+        foreach($request->media as $image){     
+            $from = public_path('tmp/uploads/'.$image);
+            $to = public_path('images/products/'.$image);
+        
+            File::move($from, $to);
+            $productImage = new Image();
+            $productImage->img_url = $image->name;
+            $productImage->product_id = $product->id;
+        }
+        
         return $product;
     }
 
