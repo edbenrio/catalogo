@@ -38,5 +38,15 @@ const app = new Vue({
     el: "#app",
     router: router,
     store: store,
-    vuetify: new Vuetify(),
+    vuetify: new Vuetify({
+        theme: {
+            themes: {
+                light: {
+                    primary: "#119DA4",
+                    secondary: "#171b34",
+                    accent: "3D87E4"
+                }
+            }
+        }
+    })  
 });

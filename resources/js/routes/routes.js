@@ -3,6 +3,7 @@ import Category from "../page/admin/category/Category.Component.vue";
 import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
+import Home from "../home/Home.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -35,6 +36,10 @@ const routes = [
                 component: Category,
             },
         ],
+    },
+    {
+        path: "/home",
+        component: Home,
     },
 ];
 
