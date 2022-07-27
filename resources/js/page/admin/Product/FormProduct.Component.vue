@@ -243,8 +243,8 @@ export default {
                 if (edit) {
                     this.editProduct(item);
                 } else {
-                    this.createProduct(item);
                     this.guardarImagen();
+                    this.createProduct(item);
                 }
                 this.resetValidate();
                 this.clearBrandForOther();
@@ -254,7 +254,7 @@ export default {
             this.$refs.form.resetValidation();
         },
         guardarImagen() {
-            this.$refs.getImages.media;
+            this.product.media = this.$refs.getImages.media;
         },
     },
 };

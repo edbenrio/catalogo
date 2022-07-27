@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\ProductDetail;
+use File;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,6 +21,7 @@ class ProductController extends Controller
             ->with( 'brand:id,nombre')
             ->with('image')
             ->with('categories')
+          //  ->with('productDetail')
             ->get();
         return $product;
     }
@@ -46,13 +49,26 @@ class ProductController extends Controller
         $product->fill($data);
         $product->save(); 
         foreach($request->media as $image){     
-            $from = public_path('tmp/uploads/'.$image);
-            $to = public_path('images/products/'.$image);
+            //dd();
+            $image = json_decode(json_encode( $image));
+            $from = public_path('tmp/uploads/'.$image->name);
+            $to = public_path('images/products/'.$image->name);
         
             File::move($from, $to);
             $productImage = new Image();
-            $productImage->img_url = $image->name;
+            $productImage->img_url = 'images/products/'.$image->name;
             $productImage->product_id = $product->id;
+            $productImage->save();
+        }
+        foreach ($request->product_details as $detail){
+            $detail = json_decode(json_encode( $detail));
+            $detalle = new ProductDetail();
+           
+            $detalle->campo_detalle = $detail->campo_detalle;
+            $detalle->campo_nombre = $detail->campo_nombre;
+            $detalle->product_id = $product->id;
+            $detalle->save();
+
         }
         
         return $product;
@@ -110,5 +126,26 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         return $product->delete();
+    }
+
+    public function search(Request $request){
+        $filtro = $request->buscador;
+        if ($filtro==""){
+            $products = Product::select('id','nombre','codigo','descripcion')
+                ->with( 'brand:id,nombre')
+                ->with('image')
+                ->with('categories')
+                ->get();
+        }else{
+            $products = Product::select('id','nombre','codigo','descripcion')
+                ->with( 'brand:id,nombre')
+                ->with('image')
+                ->with('categories')
+                ->where('nombre', 'LIKE', '%' .$filtro.'%')
+                ->orWhere('descripcion', 'LIKE', '%' .$filtro.'%')
+                ->orWhere('codigo', 'LIKE', '%' .$filtro.'%')
+                ->get();
+        }
+        return $products;
     }
 }

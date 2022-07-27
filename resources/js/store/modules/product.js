@@ -10,11 +10,12 @@ const state = {
     canCreate: false,
     canEdit: false,
     canDelete: false,
-    product_details: [],
+    //product_details: [],
     product_detail: {},
     product: {
         venta: 0,
         alquiler: 0,
+        product_details: [],
     },
     headers: [
         { text: "Nombre", value: "nombre", sortable: true, width: "150px" },
@@ -110,6 +111,22 @@ const actions = {
             commit("GET_ONE_PRODUCT", params);
         });
     },
+    buscarProductos({state, commit}, buscador) {
+        if (state.setTimeoutBuscador) clearTimeout( state.setTimeoutBuscador )
+        state.setTimeoutBuscador = setTimeout(function(){
+            axios.get('/search_products', {
+                    params: {
+                        buscador: buscador
+                    }
+                })
+                .then( res => {
+                    commit("GET_PRODUCTS", res.data);
+                })
+                .catch( error => {
+                    console.log('hay error: '+ error )
+                });
+        }, 250)
+    },
 };
 
 //Metodos Brand
@@ -155,11 +172,11 @@ const mutations = {
         state.img = item;
     },
     addNewProdcutDetail(state, item) {
-        state.product_details.push(item);
+        state.product.product_details.push(item);
         state.product_detail = {};
     },
     deleteProductDetail(state, index) {
-        state.product_details.splice(index, 1);
+        state.product.product_details.splice(index, 1);
     },
 };
 

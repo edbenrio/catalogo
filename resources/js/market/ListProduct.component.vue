@@ -1,8 +1,17 @@
 <template>
     <div>
         <v-app>
+            
             <template>
             <v-container >
+                <template>
+                    <v-text-field 
+                        class="mx-7" 
+                        block
+                        v-model="searchProduct"
+                        @keyup="buscarProductos(searchProduct)"
+                    ></v-text-field>
+                </template>
                 <v-row> <!-- -->
                 <v-card 
                     class="my-3 mx-3 col-md-3 col-sm-12" 
@@ -54,6 +63,7 @@ import imageUrl from "../../assets/no-foto.png";
 export default {
     data: () => ({
         image: imageUrl,
+        searchProduct:'',
     }),
     components: {
        
@@ -66,7 +76,7 @@ export default {
        ...mapState("product",["products"]),
     },
     methods: {
-        ...mapActions("product",["getProducts"]),
+        ...mapActions("product",["getProducts","buscarProductos"]),
         verProducto(id){
             alert(id);
         }
