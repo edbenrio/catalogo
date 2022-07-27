@@ -128,6 +128,7 @@
                                         ref="getImages"
                                     >
                                     </upload-media>
+                                    <v-btn @click="guardarImagen"> a </v-btn>
                                 </v-col>
                             </v-col>
                         </v-row>
@@ -208,6 +209,7 @@ export default {
             "edit",
             "brand",
             "deleteDialog",
+            "product_details",
         ]),
         ...mapState("brand", ["brands", "isBrandForOther", "brandForOther"]),
         formTitle() {
@@ -239,6 +241,8 @@ export default {
         //Dependiendo del edit (boolean), crea o edita la marca
         //resetea validacion, obtiene las listas marca, borra los campos nombre url
         validateSubmit(edit, item) {
+            // this.product.product_details = this.product_details;
+            this.product.media = this.$refs.getImages.media;
             if (this.$refs.form.validate()) {
                 if (edit) {
                     this.editProduct(item);

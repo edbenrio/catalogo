@@ -46,18 +46,11 @@ const actions = {
 
     async createProduct({ commit, dispatch }, params) {
         //si existe imagen crea esa imagen sino pasa linea
-        if (params.img_url) {
-            await this.dispatch("image/createImage", params.img_url).then(
-                (res) => {
-                    params.img_url = res.data;
-                }
-            );
-        }
+        console.log(params);
 
         axios
             .post("/products", params)
             .then((response) => {
-                console.log(response);
                 commit("CREATE_PRODUCT", params);
             })
             .then(() => {

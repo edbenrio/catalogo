@@ -131,13 +131,13 @@ class ProductController extends Controller
     public function search(Request $request){
         $filtro = $request->buscador;
         if ($filtro==""){
-            $products = Product::select('id','nombre','codigo','descripcion')
+            $products = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
                 ->with( 'brand:id,nombre')
                 ->with('image')
                 ->with('categories')
                 ->get();
         }else{
-            $products = Product::select('id','nombre','codigo','descripcion')
+            $products = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
                 ->with( 'brand:id,nombre')
                 ->with('image')
                 ->with('categories')
