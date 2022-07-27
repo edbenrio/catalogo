@@ -48,7 +48,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
         return Category::select('id', 'nombre', 'img_url')
             ->find($id);

@@ -48,7 +48,7 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show($id)
     {
         return Brand::select('id', 'nombre', 'img_url')
             ->find($id);
