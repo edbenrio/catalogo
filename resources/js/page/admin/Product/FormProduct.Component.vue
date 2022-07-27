@@ -34,7 +34,7 @@
                                         ></v-text-field>
                                     </v-col>
 
-                                    <v-col cols="12">
+                                    <v-col cols="6">
                                         <!-- seleccion y busqueda de marca -->
                                         <v-autocomplete
                                             :menu-props="{
@@ -83,6 +83,15 @@
                                         </v-autocomplete>
                                     </v-col>
 
+                                    <v-col>
+                                        <v-text-field
+                                            v-model="product.precio"
+                                            placeholder="Gs."
+                                            label="Precio"
+                                            type="number"
+                                        ></v-text-field>
+                                    </v-col>
+
                                     <v-col cols="12">
                                         <v-textarea
                                             v-model="product.descripcion"
@@ -128,7 +137,6 @@
                                         ref="getImages"
                                     >
                                     </upload-media>
-                                    <v-btn @click="guardarImagen"> a </v-btn>
                                 </v-col>
                             </v-col>
                         </v-row>
