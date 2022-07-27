@@ -1,38 +1,67 @@
 <template>
-    <v-form>
-        <v-list v-if="tam">
-            <v-card v-for="(array, index) in arrays" :key="index" class="mt-2">
-                <v-subheader
-                    >Item Adicional {{ index + 1 }}
-
-                    <v-spacer></v-spacer>
-                    <v-btn fab small color="red">
+    <div class="pa-2">
+        <v-list>
+            <v-card
+                v-for="(array, index) in product_details"
+                :key="index"
+                class="mt-2 pa-2 ma-2"
+                color="blue-grey lighten-4"
+            >
+                <v-subheader class="ml-4"
+                    >Adicional {{ index + 1 }}
+                    <v-spacer />
+                    <v-btn
+                        fab
+                        small
+                        color="red"
+                        @click="deleteProductDetail(index)"
+                    >
                         <v-icon> mdi-delete-outline </v-icon>
                     </v-btn>
                 </v-subheader>
 
                 <v-list-item>
-                    <strong>{{ array.texto }}</strong>
+                    <v-subheader>Titulo:</v-subheader>
+                    <strong>{{ array.campo_nombre }}</strong>
+                </v-list-item>
+                <v-list-item>
+                    <v-subheader>Descripcion:</v-subheader>
+                    <strong>{{ array.campo_detalle }}</strong>
                 </v-list-item>
             </v-card>
         </v-list>
 
-        <v-subheader>Adicional {{ tam + 1 }}</v-subheader>
-        <v-text-field v-model="texto" label="Item adicional"> </v-text-field>
-        <v-btn fab @click="addNew">
+        <v-text-field
+            v-model="product_detail.campo_nombre"
+            label="Titulo "
+            placeholder="Ej: Peso producto"
+        >
+        </v-text-field>
+        <v-text-field
+            v-model="product_detail.campo_detalle"
+            label="Descripcion"
+            placeholder="Ej: 80kg"
+        >
+        </v-text-field>
+        <v-btn rounded @click="addNewProdcutDetail(product_detail)">
             <v-icon>mdi-plus</v-icon>
         </v-btn>
-    </v-form>
+    </div>
 </template>
 
 <script>
+import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
     data: () => ({}),
+    computed: {
+        ...mapState("product", ["product_details", "product_detail"]),
+        ...mapGetters("product", ["getLengthProductDetails"]),
+    },
     methods: {
-        addNew() {
-            this.tam++;
-            this.arrays.push({ texto: this.texto });
-        },
+        ...mapMutations("product", [
+            "addNewProdcutDetail",
+            "deleteProductDetail",
+        ]),
     },
 };
 </script>

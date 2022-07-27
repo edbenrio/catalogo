@@ -1,146 +1,142 @@
 <template>
     <v-form ref="form" v-model="valid" lazy-validation>
         <v-dialog v-model="dialog" @click:outside="setDialog">
-            <v-card class="pa-5">
+            <v-card class="pa-5 overflow-auto" height="700px">
                 <v-card-title class="ml-n5"> Nuevo Producto </v-card-title>
-                <v-expansion-panels
-                    v-model="panel"
-                    :disabled="disabled"
-                    multiple
+
+                <v-tabs
+                    v-model="tab"
+                    background-color="deep-purple accent-4"
+                    dark
                 >
-                    <v-expansion-panel>
-                        <v-expansion-panel-header color="grey lighten-4 "
-                            >Detalle Productos</v-expansion-panel-header
-                        >
-                        <v-expansion-panel-content>
-                            <v-row>
-                                <v-col cols="5">
-                                    <v-row>
-                                        <v-col cols="6">
-                                            <v-text-field
-                                                v-model="product.nombre"
-                                                placeholder="Nombre Producto"
-                                                label="Nombre"
-                                            ></v-text-field>
-                                        </v-col>
-                                        <v-col cols="6">
-                                            <v-text-field
-                                                v-model="product.codigo"
-                                                placeholder="ej: 858478587"
-                                                label="Codigo"
-                                            ></v-text-field>
-                                        </v-col>
+                    <v-tabs-slider></v-tabs-slider>
+                    <v-tab href="#tab-producto">Detalle Producto </v-tab>
 
-                                        <v-col cols="12">
-                                            <!-- seleccion y busqueda de marca -->
-                                            <v-autocomplete
-                                                :menu-props="{
-                                                    nudgeBottom: 15 + 'px',
-                                                }"
-                                                v-model="product.brand_id"
-                                                :items="brands"
-                                                :search-input.sync="searchBrand"
-                                                :rules="marcaRules"
-                                                label="Elija una marca"
-                                                item-text="nombre"
-                                                item-value="id"
-                                                cache-items
-                                                clearable
-                                            >
-                                                <!-- En caso que no encuentra -->
-                                                <!-- Opcion para crear marca -->
-                                                <template v-slot:no-data>
-                                                    <v-sheet
-                                                        class="d-flex justify-center ma-2"
-                                                    >
-                                                        <h5>
-                                                            Marca inexistente
-                                                        </h5>
-                                                    </v-sheet>
-                                                    <v-sheet
-                                                        class="d-flex justify-center"
-                                                    >
-                                                        <v-btn
-                                                            @click="
-                                                                setDialogBrand();
-                                                                setIsBrandForOther();
-                                                            "
-                                                            >Crear Marca</v-btn
-                                                        >
-                                                    </v-sheet>
-                                                </template>
+                    <v-tab href="#tab-adicional">Detalle Adicional </v-tab>
+                </v-tabs>
+                <v-tabs-items v-model="tab">
+                    <v-tab-item value="tab-producto">
+                        <v-row>
+                            <v-col cols="5">
+                                <v-row>
+                                    <v-col cols="6">
+                                        <v-text-field
+                                            v-model="product.nombre"
+                                            placeholder="Nombre Producto"
+                                            label="Nombre"
+                                        ></v-text-field>
+                                    </v-col>
+                                    <v-col cols="6">
+                                        <v-text-field
+                                            v-model="product.codigo"
+                                            placeholder="ej: 858478587"
+                                            label="Codigo"
+                                        ></v-text-field>
+                                    </v-col>
 
-                                                <template
-                                                    v-slot:item="{ item }"
+                                    <v-col cols="12">
+                                        <!-- seleccion y busqueda de marca -->
+                                        <v-autocomplete
+                                            :menu-props="{
+                                                nudgeBottom: 15 + 'px',
+                                            }"
+                                            v-model="product.brand_id"
+                                            :items="brands"
+                                            :search-input.sync="searchBrand"
+                                            :rules="marcaRules"
+                                            label="Elija una marca"
+                                            item-text="nombre"
+                                            item-value="id"
+                                            cache-items
+                                            clearable
+                                        >
+                                            <!-- En caso que no encuentra -->
+                                            <!-- Opcion para crear marca -->
+                                            <template v-slot:no-data>
+                                                <v-sheet
+                                                    class="d-flex justify-center ma-2"
                                                 >
-                                                    <v-img
-                                                        max-height="50"
-                                                        max-width="50"
-                                                        :src="item.img_url"
-                                                        class="rounded"
-                                                    ></v-img>
-                                                    {{ item.nombre }}
-                                                </template>
-                                            </v-autocomplete>
-                                        </v-col>
+                                                    <h5>Marca inexistente</h5>
+                                                </v-sheet>
+                                                <v-sheet
+                                                    class="d-flex justify-center"
+                                                >
+                                                    <v-btn
+                                                        @click="
+                                                            setDialogBrand();
+                                                            setIsBrandForOther();
+                                                        "
+                                                        >Crear Marca</v-btn
+                                                    >
+                                                </v-sheet>
+                                            </template>
 
-                                        <v-col cols="12">
-                                            <v-textarea
-                                                v-model="product.descripcion"
-                                                placeholder="Descripcion"
-                                                label="Descripcion"
-                                                rows="5"
-                                            ></v-textarea>
+                                            <template v-slot:item="{ item }">
+                                                <v-img
+                                                    max-height="50"
+                                                    max-width="50"
+                                                    :src="item.img_url"
+                                                    class="rounded"
+                                                ></v-img>
+                                                {{ item.nombre }}
+                                            </template>
+                                        </v-autocomplete>
+                                    </v-col>
+
+                                    <v-col cols="12">
+                                        <v-textarea
+                                            v-model="product.descripcion"
+                                            placeholder="Descripcion"
+                                            label="Descripcion"
+                                            rows="5"
+                                        ></v-textarea>
+                                    </v-col>
+                                </v-row>
+                            </v-col>
+                            <v-col cols="1">
+                                <v-divider vertical></v-divider>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-col cols="12">
+                                    <v-subheader class="ml-n4"
+                                        >Metodo
+                                    </v-subheader>
+                                    <v-row class="mt-n5">
+                                        <v-col cols="6">
+                                            <v-checkbox
+                                                v-model="product.venta"
+                                                label="Venta"
+                                                :value="1"
+                                            ></v-checkbox>
+                                        </v-col>
+                                        <v-col cols="6">
+                                            <v-checkbox
+                                                v-model="product.alquiler"
+                                                label="Alquiler"
+                                                :value="1"
+                                            ></v-checkbox>
                                         </v-col>
                                     </v-row>
                                 </v-col>
-                                <v-col cols="1">
-                                    <v-divider vertical></v-divider>
+                                <v-col cols="12" class="mt-n5">
+                                    <v-subheader class="ml-n4"
+                                        >Agregar Imagen</v-subheader
+                                    >
+                                    <upload-media
+                                        class="scroll-media"
+                                        server="/image"
+                                        ref="getImages"
+                                    >
+                                    </upload-media>
                                 </v-col>
-                                <v-col cols="5">
-                                    <v-col cols="12">
-                                        <v-subheader class="ml-n4"
-                                            >Metodo
-                                        </v-subheader>
-                                        <v-row class="mt-n5">
-                                            <v-col cols="6">
-                                                <v-checkbox
-                                                    v-model="product.venta"
-                                                    label="Venta"
-                                                    :value="1"
-                                                ></v-checkbox>
-                                            </v-col>
-                                            <v-col cols="6">
-                                                <v-checkbox
-                                                    v-model="product.alquiler"
-                                                    label="Alquiler"
-                                                    :value="1"
-                                                ></v-checkbox>
-                                            </v-col>
-                                        </v-row>
-                                    </v-col>
-                                    <v-col cols="12" class="mt-n5">
-                                        <v-subheader class="ml-n4"
-                                            >Agregar Imagen</v-subheader
-                                        >
-                                        <upload-media
-                                            class="scroll-media"
-                                            server="/image"
-                                            ref="getImages"
-                                        >
-                                        </upload-media>
-                                    </v-col>
-                                </v-col>
-                            </v-row>
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-                    <v-expansion-panel>
-                        <v-expansion-panel-header color="grey lighten-4 "
-                            >Detalle Adicionales</v-expansion-panel-header
-                        >
-                        <v-expansion-panel-content> </v-expansion-panel-content>
-                    </v-expansion-panel>
-                </v-expansion-panels>
+                            </v-col>
+                        </v-row>
+                    </v-tab-item>
+                    <v-tab-item value="tab-adicional">
+                        <product-details />
+                    </v-tab-item>
+                </v-tabs-items>
+                <v-spacer />
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" text @click="setDialog">
@@ -162,7 +158,7 @@
 <script>
 import { mapMutations, mapState, mapActions } from "vuex";
 import { UploadMedia, UpdateMedia } from "vue-media-upload";
-
+import ProductDetails from "./ProductDetails.Component.vue";
 export default {
     data: () => ({
         valid: true,
@@ -173,10 +169,13 @@ export default {
         searchBrand: "",
         filename: null,
         showImg: null,
+        panel: [0],
+        tab: null,
     }),
     components: {
         UploadMedia,
         UpdateMedia,
+        ProductDetails,
     },
     watch: {
         //actualiza al agregar nueva Marca desde el Form Producto

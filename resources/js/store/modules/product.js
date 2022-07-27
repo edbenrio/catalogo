@@ -10,6 +10,8 @@ const state = {
     canCreate: false,
     canEdit: false,
     canDelete: false,
+    product_details: [],
+    product_detail: {},
     product: {
         venta: 0,
         alquiler: 0,
@@ -151,6 +153,13 @@ const mutations = {
     },
     setImage(state, item) {
         state.img = item;
+    },
+    addNewProdcutDetail(state, item) {
+        state.product_details.push(item);
+        state.product_detail = {};
+    },
+    deleteProductDetail(state, index) {
+        state.product_details.splice(index, 1);
     },
 };
 
