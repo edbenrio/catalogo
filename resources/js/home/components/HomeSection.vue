@@ -23,12 +23,13 @@
                                 outlined
                                 large
                                 dark
-                                @click="$vuetify.goTo('#features')"
+                                @click="$vuetify.goTo('#feature')"
                                 class="mt-5"
                             >
                                 Saiba mais
                                 <v-icon class="ml-2">mdi-arrow-down</v-icon>
                             </v-btn>
+
                             <div class="video d-flex align-center py-4">
                                 <a @click.stop="dialog = true" class="playBut">
                                     <svg
