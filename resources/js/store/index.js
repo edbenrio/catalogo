@@ -7,6 +7,7 @@ import app from "./modules/app";
 import brand from "./modules/brand";
 import product from "./modules/product";
 import category from "./modules/category";
+import image from "./modules/image";
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ const store = new Vuex.Store({
         brand,
         product,
         category,
+        image,
     },
 });
 
