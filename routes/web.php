@@ -21,8 +21,6 @@ Route::resource('product_details', App\Http\Controllers\ProductDetailController:
 
 Auth::routes();
 
-
-
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
     Route::post('/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
