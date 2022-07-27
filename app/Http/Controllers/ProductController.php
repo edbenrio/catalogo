@@ -15,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id')->with( 'brand:id,nombre')->get();
+        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
+            ->with( 'brand:id,nombre')
+            ->with('image')
+            ->with('categories')
+            ->get();
         return $product;
     }
 
