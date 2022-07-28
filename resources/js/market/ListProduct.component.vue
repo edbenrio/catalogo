@@ -12,7 +12,7 @@
                         @keyup="buscarProductos(searchProduct)"
                     ></v-text-field>
                 </template>
-                <v-row> <!-- -->
+                <v-row justify="space-around"> <!-- -->
                 <v-card 
                     class="my-3 mx-3 col-md-3 col-sm-12" 
                     v-for="(product,i) in products " :key="i+'a'"
