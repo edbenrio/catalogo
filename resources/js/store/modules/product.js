@@ -6,16 +6,15 @@ const state = {
     deleteDialog: false,
     isDeleted: false,
     products: [],
-    product: {},
     canCreate: false,
     canEdit: false,
     canDelete: false,
-    //product_details: [],
     product_detail: {},
     product: {
         venta: 0,
         alquiler: 0,
-        product_details: [],
+        product_detail: [],
+        categories:[],
     },
     headers: [
         { text: "Nombre", value: "nombre", sortable: true, width: "150px" },
@@ -101,7 +100,7 @@ const actions = {
 
     getOneProduct({ commit }, params) {
         axios.get(`/products/${params.id}`).then((response) => {
-            commit("GET_ONE_PRODUCT", params);
+            commit("GET_ONE_PRODUCT", response.data);
         });
     },
     buscarProductos({state, commit}, buscador) {
@@ -165,11 +164,11 @@ const mutations = {
         state.img = item;
     },
     addNewProdcutDetail(state, item) {
-        state.product.product_details.push(item);
+        state.product.product_detail.push(item);
         state.product_detail = {};
     },
     deleteProductDetail(state, index) {
-        state.product.product_details.splice(index, 1);
+        state.product.product_detail.splice(index, 1);
     },
 };
 

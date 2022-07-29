@@ -21,7 +21,7 @@ Route::get('/search_products',[App\Http\Controllers\ProductController::class, 's
 Auth::routes();
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+    //Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
     Route::post('admin/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
     Route::resource('image', App\Http\Controllers\ImageController::class);
     Route::get('/{vuerouter}', function () {

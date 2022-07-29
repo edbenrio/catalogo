@@ -21,7 +21,7 @@ class ProductController extends Controller
             ->with( 'brand:id,nombre')
             ->with('image')
             ->with('categories')
-          //  ->with('productDetail')
+            ->with('productDetail')
             ->get();
         return $product;
     }
@@ -47,7 +47,11 @@ class ProductController extends Controller
         $product = new Product();
         $data = $request->only($product->getFillable());        
         $product->fill($data);
+        //$cate = json_decode(json_encode($request->categories));
+        //dd($request->categories);
         $product->save(); 
+        $product->categories()->attach($request->categories);
+        
         foreach($request->media as $image){     
             //dd();
             $image = json_decode(json_encode( $image));
@@ -60,7 +64,8 @@ class ProductController extends Controller
             $productImage->product_id = $product->id;
             $productImage->save();
         }
-        foreach ($request->product_details as $detail){
+        
+        foreach ($request->product_detail as $detail){
             $detail = json_decode(json_encode( $detail));
             $detalle = new ProductDetail();
            
@@ -80,11 +85,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        $product = Product::select('products.id', 'products.nombre', 'products.codigo', 'products.descripcion', 'brands.nombre as marca')
-            ->join('brands','brands.id','products.brand_id')
-            
+        $product = Product::select('id', 'nombre', 'codigo', 'descripcion','precio', 'venta', 'alquiler', 'brand_id')
+            ->with('brand')
+            ->with('image:img_url,product_id')
+            ->with('categories')
+            ->with('productDetail')
             ->find($id);
         return $product;
     }
