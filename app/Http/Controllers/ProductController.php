@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\ProductDetail;
+use File;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id')->with( 'brand:id,nombre')->get();
+        $product = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
+            ->with( 'brand:id,nombre')
+            ->with('image')
+            ->with('categories')
+            ->with('productDetail')
+            ->get();
         return $product;
     }
 
@@ -40,15 +47,33 @@ class ProductController extends Controller
         $product = new Product();
         $data = $request->only($product->getFillable());        
         $product->fill($data);
+        //$cate = json_decode(json_encode($request->categories));
+        //dd($request->categories);
         $product->save(); 
+        $product->categories()->attach($request->categories);
+        
         foreach($request->media as $image){     
-            $from = public_path('tmp/uploads/'.$image);
-            $to = public_path('images/products/'.$image);
+            //dd();
+            $image = json_decode(json_encode( $image));
+            $from = public_path('tmp/uploads/'.$image->name);
+            $to = public_path('images/products/'.$image->name);
         
             File::move($from, $to);
             $productImage = new Image();
-            $productImage->img_url = $image->name;
+            $productImage->img_url = 'images/products/'.$image->name;
             $productImage->product_id = $product->id;
+            $productImage->save();
+        }
+        
+        foreach ($request->product_detail as $detail){
+            $detail = json_decode(json_encode( $detail));
+            $detalle = new ProductDetail();
+           
+            $detalle->campo_detalle = $detail->campo_detalle;
+            $detalle->campo_nombre = $detail->campo_nombre;
+            $detalle->product_id = $product->id;
+            $detalle->save();
+
         }
         
         return $product;
@@ -60,11 +85,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        $product = Product::select('products.id', 'products.nombre', 'products.codigo', 'products.descripcion', 'brands.nombre as marca')
-            ->join('brands','brands.id','products.brand_id')
-            
+        $product = Product::select('id', 'nombre', 'codigo', 'descripcion','precio', 'venta', 'alquiler', 'brand_id')
+            ->with('brand')
+            ->with('image:img_url,product_id')
+            ->with('categories')
+            ->with('productDetail')
             ->find($id);
         return $product;
     }
@@ -106,5 +133,26 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         return $product->delete();
+    }
+
+    public function search(Request $request){
+        $filtro = $request->buscador;
+        if ($filtro==""){
+            $products = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
+                ->with( 'brand:id,nombre')
+                ->with('image')
+                ->with('categories')
+                ->get();
+        }else{
+            $products = Product::select('id','nombre','codigo', 'descripcion','brand_id','venta','alquiler','precio')
+                ->with( 'brand:id,nombre')
+                ->with('image')
+                ->with('categories')
+                ->where('nombre', 'LIKE', '%' .$filtro.'%')
+                ->orWhere('descripcion', 'LIKE', '%' .$filtro.'%')
+                ->orWhere('codigo', 'LIKE', '%' .$filtro.'%')
+                ->get();
+        }
+        return $products;
     }
 }

@@ -17,24 +17,18 @@
                 <v-tabs-items v-model="tab">
                     <v-tab-item value="tab-producto">
                         <v-row>
-                            <v-col cols="5">
+                            <v-col class="col-12 col-md-6">
                                 <v-row>
-                                    <v-col cols="6">
+                                    <v-col cols="12">
                                         <v-text-field
                                             v-model="product.nombre"
                                             placeholder="Nombre Producto"
                                             label="Nombre"
-                                        ></v-text-field>
-                                    </v-col>
-                                    <v-col cols="6">
-                                        <v-text-field
-                                            v-model="product.codigo"
-                                            placeholder="ej: 858478587"
-                                            label="Codigo"
+                                            :rules="nameRules"
                                         ></v-text-field>
                                     </v-col>
 
-                                    <v-col cols="12">
+                                    <v-col cols="6">
                                         <!-- seleccion y busqueda de marca -->
                                         <v-autocomplete
                                             :menu-props="{
@@ -43,7 +37,6 @@
                                             v-model="product.brand_id"
                                             :items="brands"
                                             :search-input.sync="searchBrand"
-                                            :rules="marcaRules"
                                             label="Elija una marca"
                                             item-text="nombre"
                                             item-value="id"
@@ -83,20 +76,86 @@
                                         </v-autocomplete>
                                     </v-col>
 
+                                    <v-col cols="6">
+                                        <!-- seleccion y busqueda de categoria -->
+                                        <v-autocomplete
+                                            :menu-props="{
+                                                nudgeBottom: 15 + 'px',
+                                            }"
+                                            v-model="product.categories"
+                                            :items="categories"
+                                            label="Elija una categoria"
+                                            item-text="nombre"
+                                            item-value="id"
+                                            cache-items
+                                            clearable
+                                            multiple
+                                        >
+                                            <!-- En caso que no encuentra -->
+                                            <!-- Opcion para crear categoria -->
+                                            <template v-slot:no-data>
+                                                <v-sheet
+                                                    class="d-flex justify-center ma-2"
+                                                >
+                                                    <h5>Categoría inexistente</h5>
+                                                </v-sheet>
+                                                <v-sheet
+                                                    class="d-flex justify-center"
+                                                >
+                                                    <v-btn
+                                                        @click="
+                                                            setDialogBrand();
+                                                            setIsBrandForOther();
+                                                        "
+                                                        >Crear categoría</v-btn
+                                                    >
+                                                </v-sheet>
+                                            </template>
+
+                                            <template v-slot:item="{ item }">
+                                                <v-img
+                                                    max-height="50"
+                                                    max-width="50"
+                                                    :src="item.img_url"
+                                                    class="rounded"
+                                                ></v-img>
+                                                {{ item.nombre }}
+                                            </template>
+                                        </v-autocomplete>
+                                    </v-col>
+
+                                    <v-col cols="6">
+                                        <v-text-field
+                                            v-model="product.codigo"
+                                            placeholder="ej: 858478587"
+                                            label="Codigo"
+                                        ></v-text-field>
+                                    </v-col>
+
+                                    <v-col>
+                                        <v-text-field
+                                            v-model="product.precio"
+                                            placeholder="Gs."
+                                            label="Precio"
+                                            type="number"
+                                        ></v-text-field>
+                                    </v-col>
+
                                     <v-col cols="12">
                                         <v-textarea
                                             v-model="product.descripcion"
                                             placeholder="Descripcion"
                                             label="Descripcion"
-                                            rows="5"
+                                            rows="2"
+                                            :rules="descripcionRules"
                                         ></v-textarea>
                                     </v-col>
                                 </v-row>
                             </v-col>
-                            <v-col cols="1">
+                            <v-col class="d-sm-none" cols="1">
                                 <v-divider vertical></v-divider>
                             </v-col>
-                            <v-col cols="5">
+                            <v-col class="col-12 col-md-5">
                                 <v-col cols="12">
                                     <v-subheader class="ml-n4"
                                         >Metodo
@@ -128,7 +187,6 @@
                                         ref="getImages"
                                     >
                                     </upload-media>
-                                    <v-btn @click="guardarImagen"> a </v-btn>
                                 </v-col>
                             </v-col>
                         </v-row>
@@ -166,6 +224,7 @@ export default {
         nameRules: [(v) => !!v || "Nombre del Producto es obligatorio"],
         codigoRules: [(v) => !!v || "Codigo del Producto es obligatorio"],
         marcaRules: [(v) => !!v || "Marca del Producto es obligatorio"],
+        descripcionRules: [(v) => !!v || "Ppr favor ingrese una descripción del producto"],
         localItem: {},
         searchBrand: "",
         filename: null,
@@ -199,6 +258,7 @@ export default {
     },
     mounted() {
         this.getBrands();
+        this.getCategories();
     },
     computed: {
         ...mapState("product", [
@@ -209,9 +269,9 @@ export default {
             "edit",
             "brand",
             "deleteDialog",
-            "product_details",
         ]),
         ...mapState("brand", ["brands", "isBrandForOther", "brandForOther"]),
+        ...mapState("category", ["categories"]),
         formTitle() {
             return this.edit === false ? "Nuevo Producto" : "Editar Producto";
         },
@@ -236,17 +296,18 @@ export default {
             "getProducts",
         ]),
         ...mapActions("brand", ["getBrands"]),
+        ...mapActions("category", ["getCategories"]),
 
         //validar campo requerido
         //Dependiendo del edit (boolean), crea o edita la marca
         //resetea validacion, obtiene las listas marca, borra los campos nombre url
         validateSubmit(edit, item) {
-            // this.product.product_details = this.product_details;
             this.product.media = this.$refs.getImages.media;
             if (this.$refs.form.validate()) {
                 if (edit) {
                     this.editProduct(item);
                 } else {
+                    this.guardarImagen();
                     this.createProduct(item);
                 }
                 this.resetValidate();
@@ -257,7 +318,7 @@ export default {
             this.$refs.form.resetValidation();
         },
         guardarImagen() {
-            this.$refs.getImages.media;
+            this.product.media = this.$refs.getImages.media;
         },
     },
 };

@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/admin/marca/62e2fad76c700.jpeg": "/images/admin/marca/62e2fad76c700.jpeg",
     "/images/aeroplane.svg": "/images/aeroplane.svg",
     "/images/airplane.svg": "/images/airplane.svg",
     "/images/bgDownload.jpg": "/images/bgDownload.jpg",
@@ -22,7 +23,5 @@
     "/images/logo.png": "/images/logo.png",
     "/images/no-foto.png": "/images/no-foto.png",
     "/images/paperplane.svg": "/images/paperplane.svg",
-    "/images/wave2.svg": "/images/wave2.svg",
-    "/images/admin/marca/62e2fad76c700.jpeg": "/images/admin/marca/62e2fad76c700.jpeg",
-    "/images/admin/marca/62e0b3ee3cbed.jpeg": "/images/admin/marca/62e0b3ee3cbed.jpeg"
+    "/images/wave2.svg": "/images/wave2.svg"
 }

@@ -2,7 +2,7 @@
     <div class="pa-2">
         <v-list>
             <v-card
-                v-for="(array, index) in product_details"
+                v-for="(array, index) in product.product_detail"
                 :key="index"
                 class="mt-2 pa-2 ma-2"
                 color="blue-grey lighten-4"
@@ -50,12 +50,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     data: () => ({}),
     computed: {
-        ...mapState("product", ["product_details", "product_detail"]),
-        ...mapGetters("product", ["getLengthProductDetails"]),
+        ...mapState("product", ["product", "product_detail"]),
     },
     methods: {
         ...mapMutations("product", [

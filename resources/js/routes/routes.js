@@ -4,7 +4,9 @@ import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
 import Home from "../home/Home.vue";
+import Guest from "../home/Guest.vue";
 import listProduct from "../market/ListProduct.component.vue";
+import showProduct from "../market/ShowProduct.Component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -16,36 +18,46 @@ const routes = [
         path: "/admin",
         component: Dashboard,
         children: [
-            {
-                path: "image",
+            /* {
+                path: "/image",
                 name: "Image",
                 component: Image,
-            },
+            },*/
             {
-                path: "producto",
+                path: "/producto",
                 name: "Producto",
                 component: Producto,
             },
             {
-                path: "marca",
+                path: "/marca",
                 name: "marca",
                 component: Marca,
             },
             {
-                path: "category",
+                path: "/category",
                 name: "categoria",
                 component: Category,
             },
         ],
     },
     {
-        path: "/home",
+        path: "/",
         component: Home,
+        children: [
+            {
+                path: "home",
+                component: Guest,
+            },
+            {
+                path: "listproducts",
+                component: listProduct,
+            },
+            {
+                path: "showproduct/:id",
+                component: showProduct,
+            },
+        ],
     },
-    {
-        path: "/listproducts",
-        component: listProduct,
-    }
 ];
 
 export default new VueRouter({

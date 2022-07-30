@@ -19,6 +19,7 @@ const state = {
     canCreate: false,
     canEdit: false,
     canDelete: false,
+    isHome: true,
 };
 
 const actions = {
@@ -28,13 +29,13 @@ const actions = {
                 title: "Producto y Marcas",
                 groups: [
                     { text: "Marcas", to: "marca" },
+                    { text: "Categorías", to: "category" },
                     {
                         text: "Productos",
 
                         to: "producto",
                     },
-                    { text: "Imagen", to: "image" },
-                    { text: "Categoria", to: "category" },
+                    /* { text: "Imagen", to: "image" },*/
                 ],
             },
         ];
@@ -107,6 +108,9 @@ const actions = {
 };
 
 const mutations = {
+    setIsHome(state) {
+        state.isHome = !state.isHome;
+    },
     setDrawer(state) {
         state.drawer = !state.drawer;
     },
