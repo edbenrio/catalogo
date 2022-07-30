@@ -45,7 +45,7 @@ const routes = [
     {
         path: "/listproducts",
         component: listProduct,
-    }
+    },
 ];
 
 export default new VueRouter({

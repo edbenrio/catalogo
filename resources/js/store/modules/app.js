@@ -101,7 +101,7 @@ const actions = {
     },
     logout() {
         axios.post("logout").then((response) => {
-            window.location.href = "/";
+            window.location.href = "/home";
         });
     },
 };

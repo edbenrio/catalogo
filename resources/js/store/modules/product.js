@@ -26,6 +26,7 @@ const state = {
             width: "150px",
         },
         { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
+        { text: "Precio", value: "precio", sortable: false, width: "150px" },
         { text: "Marca", value: "brand_id", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],
@@ -104,21 +105,22 @@ const actions = {
             commit("GET_ONE_PRODUCT", params);
         });
     },
-    buscarProductos({state, commit}, buscador) {
-        if (state.setTimeoutBuscador) clearTimeout( state.setTimeoutBuscador )
-        state.setTimeoutBuscador = setTimeout(function(){
-            axios.get('/search_products', {
+    buscarProductos({ state, commit }, buscador) {
+        if (state.setTimeoutBuscador) clearTimeout(state.setTimeoutBuscador);
+        state.setTimeoutBuscador = setTimeout(function () {
+            axios
+                .get("/search_products", {
                     params: {
-                        buscador: buscador
-                    }
+                        buscador: buscador,
+                    },
                 })
-                .then( res => {
+                .then((res) => {
                     commit("GET_PRODUCTS", res.data);
                 })
-                .catch( error => {
-                    console.log('hay error: '+ error )
+                .catch((error) => {
+                    console.log("hay error: " + error);
                 });
-        }, 250)
+        }, 250);
     },
 };
 
