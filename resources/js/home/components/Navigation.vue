@@ -59,6 +59,16 @@
                     max-width="50px"
                 />
             </v-toolbar-title>
+            <template>
+                <v-text-field
+                    class="mx-7 mt-3"
+                    v-model="searchProduct"
+                    label="Buscar"
+                    @keyup="buscarProductos(searchProduct)"
+                    @click="$router.push({ name: 'list' })"
+                    placeholder="Buscar Producto"
+                ></v-text-field>
+            </template>
             <v-spacer />
             <v-app-bar-nav-icon
                 @click.stop="drawer = !drawer"
@@ -66,7 +76,14 @@
                 v-if="isXs"
             />
             <div v-else>
-                <v-btn to="/home" text @click="$vuetify.goTo('#hero')">
+                <v-btn
+                    to="/home"
+                    text
+                    @click="
+                        $vuetify.goTo('#hero');
+                        setIsHomeActive;
+                    "
+                >
                     <span class="mr-2">Home</span>
                 </v-btn>
                 <v-btn v-if="isHome" text @click="$vuetify.goTo('#features')">
@@ -77,17 +94,6 @@
                 </v-btn>
                 <v-btn to="/listproducts" text>
                     <span class="mr-2">Producto</span>
-                </v-btn>
-                <v-btn
-                    rounded
-                    outlined
-                    text
-                    @click="
-                        $vuetify.goTo('#contact');
-                        setIsHome;
-                    "
-                >
-                    <span class="mr-2">Contate-nos</span>
                 </v-btn>
             </div>
         </v-app-bar>
@@ -106,9 +112,10 @@
 </style>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapActions } from "vuex";
 export default {
     data: () => ({
+        searchProduct: "",
         drawer: null,
         isXs: false,
         items: [
@@ -127,7 +134,9 @@ export default {
         onResize() {
             this.isXs = window.innerWidth < 850;
         },
-        ...mapMutations("app", ["setIsHome"]),
+        ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
+
+        ...mapActions("product", ["getProducts", "buscarProductos"]),
     },
 
     watch: {

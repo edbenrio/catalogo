@@ -108,8 +108,11 @@ const actions = {
 };
 
 const mutations = {
-    setIsHome(state) {
-        state.isHome = !state.isHome;
+    setIsHomeActive(state) {
+        state.isHome = true;
+    },
+    setIsHomePasive(state) {
+        state.isHome = false;
     },
     setDrawer(state) {
         state.drawer = !state.drawer;

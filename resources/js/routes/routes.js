@@ -47,14 +47,17 @@ const routes = [
             {
                 path: "home",
                 component: Guest,
+                name: "home",
             },
             {
                 path: "listproducts",
                 component: listProduct,
+                name: "list",
             },
             {
                 path: "showproduct/:id",
                 component: showProduct,
+                name: "show",
             },
         ],
     },

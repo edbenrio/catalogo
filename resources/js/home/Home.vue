@@ -7,7 +7,7 @@
             <download />
             <pricing />
             <contact /> -->
-            <router-view />
+            <router-view></router-view>
         </v-main>
         <v-scale-transition>
             <v-tooltip top>
@@ -74,7 +74,7 @@ export default {
     created() {
         const top = window.pageYOffset || 0;
         if (top <= 60) {
-            this.color = "transparent";
+            // this.color = "transparent";
             this.flat = true;
         }
     },
@@ -85,7 +85,7 @@ export default {
                 this.color = "secondary";
                 this.flat = false;
             } else {
-                this.color = "transparent";
+                // this.color = "transparent";
                 this.flat = true;
             }
         },
