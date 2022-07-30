@@ -28,13 +28,13 @@ const actions = {
                 title: "Producto y Marcas",
                 groups: [
                     { text: "Marcas", to: "marca" },
+                    { text: "Categorías", to: "category" },
                     {
                         text: "Productos",
 
                         to: "producto",
                     },
-                    { text: "Imagen", to: "image" },
-                    { text: "Categoria", to: "category" },
+                   /* { text: "Imagen", to: "image" },*/
                 ],
             },
         ];

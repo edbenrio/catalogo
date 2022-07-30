@@ -82,13 +82,14 @@
                                             :menu-props="{
                                                 nudgeBottom: 15 + 'px',
                                             }"
-                                            v-model="product.category_id"
+                                            v-model="product.categories"
                                             :items="categories"
                                             label="Elija una categoria"
                                             item-text="nombre"
                                             item-value="id"
                                             cache-items
                                             clearable
+                                            multiple
                                         >
                                             <!-- En caso que no encuentra -->
                                             <!-- Opcion para crear categoria -->
@@ -268,7 +269,6 @@ export default {
             "edit",
             "brand",
             "deleteDialog",
-            "product_details",
         ]),
         ...mapState("brand", ["brands", "isBrandForOther", "brandForOther"]),
         ...mapState("category", ["categories"]),
@@ -302,7 +302,6 @@ export default {
         //Dependiendo del edit (boolean), crea o edita la marca
         //resetea validacion, obtiene las listas marca, borra los campos nombre url
         validateSubmit(edit, item) {
-            // this.product.product_details = this.product_details;
             this.product.media = this.$refs.getImages.media;
             if (this.$refs.form.validate()) {
                 if (edit) {

@@ -2,7 +2,7 @@
     <div class="pa-2">
         <v-list>
             <v-card
-                v-for="(array, index) in product.product_details"
+                v-for="(array, index) in product.product_detail"
                 :key="index"
                 class="mt-2 pa-2 ma-2"
                 color="blue-grey lighten-4"
