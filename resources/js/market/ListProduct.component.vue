@@ -3,14 +3,6 @@
         <v-app>
             <template>
                 <v-container>
-                    <template>
-                        <v-text-field
-                            class="mx-7"
-                            block
-                            v-model="searchProduct"
-                            @keyup="buscarProductos(searchProduct)"
-                        ></v-text-field>
-                    </template>
                     <v-row justify="space-around">
                         <!-- -->
                         <v-card

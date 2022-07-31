@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <navigation :color="color" :flat="flat" />
+        <navigation :color="color" :flat="flat" class="mb-16" />
         <v-main class="pt-0">
             <!-- <home />
             <about />
@@ -73,10 +73,10 @@ export default {
 
     created() {
         const top = window.pageYOffset || 0;
-        if (top <= 60) {
-            // this.color = "transparent";
-            this.flat = true;
-        }
+        // if (top <= 60) {
+        // this.color = "transparent";
+        //     this.flat = true;
+        // }
     },
 
     watch: {
@@ -86,7 +86,7 @@ export default {
                 this.flat = false;
             } else {
                 // this.color = "transparent";
-                this.flat = true;
+                //this.flat = true;
             }
         },
     },

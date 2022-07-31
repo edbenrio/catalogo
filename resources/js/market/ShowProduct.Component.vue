@@ -91,7 +91,7 @@
                 </v-row>
                 <v-row class="my-10">
                     <template>
-                        <h3 v-if="product.product_detail.length > 0">
+                        <h3 v-if="product.product_detail.length != 0">
                             Especificaciones
                         </h3>
                         <v-simple-table>
@@ -106,15 +106,17 @@
                                 </th>
                                 </tr>
                             </thead> -->
-                                <tbody>
+                                <!-- <tbody>
                                     <tr
-                                        v-for="item in product.product_detail"
-                                        :key="item.name"
+                                        v-for="(
+                                            item, index
+                                        ) in product.product_detail"
+                                        :key="index"
                                     >
                                         <td>{{ item.campo_nombre }}</td>
                                         <td>{{ item.campo_detalle }}</td>
                                     </tr>
-                                </tbody>
+                                </tbody> -->
                             </template>
                         </v-simple-table>
                     </template>
@@ -191,6 +193,7 @@ export default {
     components: {},
     mounted() {
         this.getOneProduct(this.product); //reemplazar con la ID del producto
+        console.log(this.product.product_detail.length > 0);
         console.log(this.product);
     },
     computed: {

@@ -65,7 +65,7 @@
                     v-model="searchProduct"
                     label="Buscar"
                     @keyup="buscarProductos(searchProduct)"
-                    @click="$router.push({ name: 'list' })"
+                    @click="goToProductList"
                     placeholder="Buscar Producto"
                 ></v-text-field>
             </template>
@@ -81,7 +81,7 @@
                     text
                     @click="
                         $vuetify.goTo('#hero');
-                        setIsHomeActive;
+                        setIsHomeActive();
                     "
                 >
                     <span class="mr-2">Home</span>
@@ -92,7 +92,7 @@
                 <v-btn v-if="isHome" text @click="$vuetify.goTo('#download')">
                     <span class="mr-2">Download</span>
                 </v-btn>
-                <v-btn to="/listproducts" text>
+                <v-btn to="/listproducts" text @click="setIsHomePasive">
                     <span class="mr-2">Producto</span>
                 </v-btn>
             </div>
@@ -137,6 +137,11 @@ export default {
         ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 
         ...mapActions("product", ["getProducts", "buscarProductos"]),
+
+        goToProductList() {
+            const path = `/listproducts`;
+            if (this.$route.path !== path) this.$router.push(path);
+        },
     },
 
     watch: {
