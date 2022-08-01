@@ -1,13 +1,14 @@
 <template>
     <v-app>
-        <navigation :color="color" :flat="flat" />
+        <navigation :color="color" :flat="flat" class="mb-16" />
         <v-main class="pt-0">
-            <home />
+            <!-- <home />
             <about />
             <pricing />
-            <contact />
+            <contact /> -->
+            <router-view></router-view>
         </v-main>
-        <v-scale-transition>
+        <v-scale-transition v-if="isHome">
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -49,6 +50,7 @@ import about from "./components/AboutSection";
 import download from "./components/DownloadSection";
 import pricing from "./components/PricingSection";
 import contact from "./components/ContactSection";
+import { mapState, mapMutations } from "vuex";
 
 export default {
     name: "App",
@@ -70,10 +72,10 @@ export default {
 
     created() {
         const top = window.pageYOffset || 0;
-        if (top <= 60) {
-            this.color = "transparent";
-            this.flat = true;
-        }
+        // if (top <= 60) {
+        // this.color = "transparent";
+        //     this.flat = true;
+        // }
     },
 
     watch: {
@@ -82,8 +84,8 @@ export default {
                 this.color = "secondary";
                 this.flat = false;
             } else {
-                this.color = "transparent";
-                this.flat = true;
+                // this.color = "transparent";
+                //this.flat = true;
             }
         },
     },
@@ -97,6 +99,9 @@ export default {
         toTop() {
             this.$vuetify.goTo(0);
         },
+    },
+    computed: {
+        ...mapState("app", ["isHome"]),
     },
 };
 </script>

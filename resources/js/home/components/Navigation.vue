@@ -58,6 +58,16 @@
                     max-width="180px"
                 />
             </v-toolbar-title>
+            <template>
+                <v-text-field
+                    class="mx-7 mt-3"
+                    v-model="searchProduct"
+                    label="Buscar"
+                    @keyup="buscarProductos(searchProduct)"
+                    @click="goToProductList"
+                    placeholder="Buscar Producto"
+                ></v-text-field>
+            </template>
             <v-spacer />
             <v-app-bar-nav-icon
                 @click.stop="drawer = !drawer"
@@ -84,7 +94,7 @@
 
 <style scoped>
 .v-toolbar {
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .expand {
@@ -98,8 +108,10 @@
 </style>
 
 <script>
+import { mapState, mapMutations, mapActions } from "vuex";
 export default {
     data: () => ({
+        searchProduct: "",
         drawer: null,
         isXs: false,
         items: [
@@ -114,8 +126,18 @@ export default {
         flat: Boolean,
     },
     methods: {
+        ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
             this.isXs = window.innerWidth < 850;
+        },
+        ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
+
+        ...mapActions("product", ["getProducts", "buscarProductos"]),
+
+        goToProductList() {
+            const path = `/listproducts`;
+            if (this.$route.path !== path) this.$router.push(path);
+            this.setIsHomePasive();
         },
     },
 
@@ -131,6 +153,9 @@ export default {
     mounted() {
         this.onResize();
         window.addEventListener("resize", this.onResize, { passive: true });
+    },
+    computed: {
+        ...mapState("app", ["isHome"]),
     },
 };
 </script>

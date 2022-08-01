@@ -97,7 +97,9 @@
                                                 <v-sheet
                                                     class="d-flex justify-center ma-2"
                                                 >
-                                                    <h5>Categoría inexistente</h5>
+                                                    <h5>
+                                                        Categoría inexistente
+                                                    </h5>
                                                 </v-sheet>
                                                 <v-sheet
                                                     class="d-flex justify-center"
@@ -224,7 +226,9 @@ export default {
         nameRules: [(v) => !!v || "Nombre del Producto es obligatorio"],
         codigoRules: [(v) => !!v || "Codigo del Producto es obligatorio"],
         marcaRules: [(v) => !!v || "Marca del Producto es obligatorio"],
-        descripcionRules: [(v) => !!v || "Ppr favor ingrese una descripción del producto"],
+        descripcionRules: [
+            (v) => !!v || "Ppr favor ingrese una descripción del producto",
+        ],
         localItem: {},
         searchBrand: "",
         filename: null,
@@ -307,7 +311,6 @@ export default {
                 if (edit) {
                     this.editProduct(item);
                 } else {
-                    this.guardarImagen();
                     this.createProduct(item);
                 }
                 this.resetValidate();
