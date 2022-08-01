@@ -50,12 +50,11 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapGetters } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     data: () => ({}),
     computed: {
         ...mapState("product", ["product", "product_detail"]),
-        ...mapGetters("product", ["getLengthProductDetails"]),
     },
     methods: {
         ...mapMutations("product", [

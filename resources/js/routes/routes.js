@@ -4,6 +4,7 @@ import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
 import Home from "../home/Home.vue";
+import Guest from "../home/Guest.vue";
 import listProduct from "../market/ListProduct.component.vue";
 import showProduct from "../market/ShowProduct.Component.vue";
 
@@ -40,16 +41,25 @@ const routes = [
         ],
     },
     {
-        path: "/home",
+        path: "/",
         component: Home,
-    },
-    {
-        path: "/listproducts",
-        component: listProduct,
-    },
-    {
-        path: "/showproduct",
-        component: showProduct,
+        children: [
+            {
+                path: "home",
+                component: Guest,
+                name: "home",
+            },
+            {
+                path: "listproducts",
+                component: listProduct,
+                name: "list",
+            },
+            {
+                path: "showproduct/:id",
+                component: showProduct,
+                name: "show",
+            },
+        ],
     },
 ];
 

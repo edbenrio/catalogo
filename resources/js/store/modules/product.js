@@ -14,7 +14,7 @@ const state = {
         venta: 0,
         alquiler: 0,
         product_detail: [],
-        categories:[],
+        categories: [],
     },
     headers: [
         { text: "Nombre", value: "nombre", sortable: true, width: "150px" },
@@ -46,7 +46,6 @@ const actions = {
 
     async createProduct({ commit, dispatch }, params) {
         //si existe imagen crea esa imagen sino pasa linea
-        console.log(params);
 
         axios
             .post("/products", params)

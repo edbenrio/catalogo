@@ -12,20 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function(){
+    return redirect('/home');
+});
+Route::get('/search_products',[App\Http\Controllers\ProductController::class, 'search']);
+
 Route::resource('brands', App\Http\Controllers\BrandController::class);
 Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('product_details', App\Http\Controllers\ProductDetailController::class);
-Route::get('/search_products',[App\Http\Controllers\ProductController::class, 'search']);
 
 Auth::routes();
-
-
 Route::middleware(['auth'])->group(function(){
     //Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
     Route::post('admin/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
-    Route::resource('image', App\Http\Controllers\ImageController::class);
-    Route::get('/{vuerouter}', function () {
-        return view('welcome');
-    })->where( "vuerouter",  ".*");
+    Route::post('/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
+
+    Route::get('admin', function(){
+        return view('welcome'); 
+    });
+
 });
+
+Route::get('/{vuerouter}', function () {
+    return view('welcome');
+})->where( "vuerouter",  ".*");
