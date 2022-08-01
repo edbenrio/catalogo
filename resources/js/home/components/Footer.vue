@@ -48,5 +48,8 @@ export default {
       },
     ],
   }),
+    computed: {
+        ...mapState("app", ["isHome"]),
+    },
 };
 </script>
