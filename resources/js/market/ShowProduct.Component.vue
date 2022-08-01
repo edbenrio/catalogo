@@ -11,7 +11,7 @@
                                         v-for="(item,i) in product.image"
                                         :key="i"
                                     >
-                                    <v-img :src="item.img_url" contain max-height="500"></v-img>
+                                    <v-img :src="item.img_url" contain max-height="300"></v-img>
                                     </v-carousel-item>
                                 </v-carousel>
                             </v-row>

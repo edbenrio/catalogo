@@ -50,7 +50,7 @@
                         </v-col>
                         <v-col cols="12" md="5" class="d-none d-md-flex">
                             <v-img
-                                :src="require('../assets/img/ill1.svg')"
+                                :src="require('../assets/img/oxigeno.jpg')"
                                 class="d-block ml-auto mr-auto"
                                 max-width="400px"
                             />
@@ -64,6 +64,6 @@
 
 <style scoped>
 #about {
-    background-color: #f4f7f5;
+    background-color: #ffffff;
 }
 </style>

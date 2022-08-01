@@ -1,11 +1,13 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/images/abgHero.jpg": "/images/abgHero.jpg",
     "/images/aeroplane.svg": "/images/aeroplane.svg",
     "/images/airplane.svg": "/images/airplane.svg",
     "/images/bgDownload.jpg": "/images/bgDownload.jpg",
     "/images/bgDrawer.jpg": "/images/bgDrawer.jpg",
     "/images/bgHero.jpg": "/images/bgHero.jpg",
+    "/images/bgHero1.0.jpg": "/images/bgHero1.0.jpg",
     "/images/bghero1.jpg": "/images/bghero1.jpg",
     "/images/bgMain.png": "/images/bgMain.png",
     "/images/borderWaves.svg": "/images/borderWaves.svg",
@@ -19,12 +21,11 @@
     "/images/ill1.svg": "/images/ill1.svg",
     "/images/ill2.svg": "/images/ill2.svg",
     "/images/img/logo.png": "/images/img/logo.png",
+    "/images/itapua medical.PNG": "/images/itapua medical.PNG",
+    "/images/itapuamedical.png": "/images/itapuamedical.png",
     "/images/logo.png": "/images/logo.png",
     "/images/no-foto.png": "/images/no-foto.png",
     "/images/paperplane.svg": "/images/paperplane.svg",
     "/images/wave2.svg": "/images/wave2.svg",
-    "/images/bgHero1.0.jpg": "/images/bgHero1.0.jpg",
-    "/images/itapua medical.PNG": "/images/itapua medical.PNG",
-    "/images/itapuamedical.png": "/images/itapuamedical.png",
-    "/images/abgHero.jpg": "/images/abgHero.jpg"
+    "/images/oxigeno.jpg": "/images/oxigeno.jpg"
 }

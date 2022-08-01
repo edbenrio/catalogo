@@ -4,7 +4,6 @@
         <v-main class="pt-0">
             <home />
             <about />
-            <download />
             <pricing />
             <contact />
         </v-main>
@@ -59,7 +58,6 @@ export default {
         foote,
         home,
         about,
-        download,
         pricing,
         contact,
     },

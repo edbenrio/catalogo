@@ -4,8 +4,9 @@ import Image from "../page/admin/image/Image.Component.vue";
 import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
 import Home from "../home/Home.vue";
-import listProduct from "../market/ListProduct.component.vue";
+import listProduct from "../market/ListProduct.Component.vue";
 import showProduct from "../market/ShowProduct.Component.vue";
+import pageNotFound from "../page/PageNotFound.Component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -50,7 +51,8 @@ const routes = [
     {
         path: "/showproduct",
         component: showProduct,
-    }
+    },
+    { path: "*", component: pageNotFound }
 ];
 
 export default new VueRouter({

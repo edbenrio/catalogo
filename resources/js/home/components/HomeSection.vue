@@ -8,10 +8,10 @@
             <v-row align="center" justify="center">
                 <v-col cols="10">
                     <v-row align="center" justify="center">
-                        <h1 class="display-2 font-weight-bold mb-4">
+                        <h1 class="display-2 font-weight-bold mb-4 sombra">
                             Oxigeno Medicinal
                         </h1>
-                        <h1 class="font-weight-light">
+                        <h1 class="font-weight-light sombra">
                             ·Electromedicina<br />
                             ·Oxigenoterapia
                             <br />
@@ -24,49 +24,7 @@
                 <v-img :src="require('../assets/img/borderWaves.svg')" />
             </div>
         </v-parallax>
-        <v-container fluid id="features" class="mt-2">
-            <v-row align="center" justify="center">
-                <v-col cols="10">
-                    <v-row align="center" justify="space-around">
-                        <!-- <v-col cols="12" class="text-center">
-              <h1 class="font-weight-light display-2">Title</h1>
-              <h1 class="font-weight-light">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h1>
-            </v-col> -->
-                        <v-col
-                            cols="12"
-                            sm="4"
-                            class="text-center"
-                            v-for="(feature, i) in features"
-                            :key="i"
-                        >
-                            <v-hover v-slot:default="{ hover }">
-                                <v-card
-                                    class="card"
-                                    shaped
-                                    :elevation="hover ? 10 : 4"
-                                    :class="{ up: hover }"
-                                >
-                                    <v-img
-                                        :src="feature.img"
-                                        max-width="100px"
-                                        class="d-block ml-auto mr-auto"
-                                        :class="{ 'zoom-efect': hover }"
-                                    ></v-img>
-                                    <h1 class="font-weight-regular">
-                                        {{ feature.title }}
-                                    </h1>
-                                    <h4 class="font-weight-regular subtitle-1">
-                                        {{ feature.text }}
-                                    </h4>
-                                </v-card>
-                            </v-hover>
-                        </v-col>
-                    </v-row>
-                </v-col>
-            </v-row>
-        </v-container>
+        
         <v-dialog v-model="dialog" max-width="640px">
             <v-card>
                 <youtube
@@ -82,29 +40,16 @@
     </section>
 </template>
 
+<style>
+.sombra {
+  text-shadow: 2px 2px #414040;
+}</style>
 <script>
 export default {
     data() {
         return {
             dialog: false,
             videoId: "i8IvvHJssWE",
-            features: [
-                {
-                    img: require("../assets/img/icon2.png"),
-                    title: "Design Limpo",
-                    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                },
-                {
-                    img: require("../assets/img/icon1.png"),
-                    title: "Dados Seguros",
-                    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                },
-                {
-                    img: require("../assets/img/icon3.png"),
-                    title: "Código Aberto",
-                    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                },
-            ],
         };
     },
     watch: {
