@@ -3,14 +3,6 @@
         <v-app>
             <template>
                 <v-container>
-                    <template>
-                        <v-text-field
-                            class="mx-7"
-                            block
-                            v-model="searchProduct"
-                            @keyup="buscarProductos(searchProduct)"
-                        ></v-text-field>
-                    </template>
                     <v-row justify="space-around">
                         <!-- -->
                         <v-col
@@ -22,7 +14,11 @@
                         >
                             <v-card
                                 class="my-3 mx-3 card-outter"
-                                @click="verProducto(product.id)"
+                                @click="
+                                    $router.push({
+                                        path: `/showproduct/${product.id}`,
+                                    })
+                                "
                             >
                                 <v-img
                                     :contain="true"
