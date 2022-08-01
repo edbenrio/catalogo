@@ -6,17 +6,18 @@
                     <v-row justify="center">
                         <v-col cols="12" sm="5">
                             <h1 class="font-weight-light display-1">
-                                Contate-nos
+                                Contacto
                             </h1>
                             <h3 class="font-weight-light mt-3">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Iste explicabo commodi
-                                quisquam asperiores dolore ad enim provident
-                                veniam perferendis voluptate, perspiciatis.
+                                Para una mejor atencion contacte con 
+                                nosotros a traves de Whatsapp o 
+                                llamadas telefonicas 
                             </h3>
                             <h3 class="font-weight-light mt-3">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing.
+                                Tambien nos puede encontrar sobre 
+                                25 de mayo esquina c/antequera 
+                                Edificio Bolshoi planta baja sobre 
+                                25 de mayo Encarnacion-Paraguay 
                             </h3>
                             <h3 class="font-weight-light mt-3">
                                 Telefone: +xx (xx) xxxxx-xxxx
@@ -25,46 +26,9 @@
                                 Email: email@email.com
                             </h3>
                         </v-col>
-                        <v-col cols="12" sm="7">
-                            <v-form
-                                ref="form"
-                                v-model="valid"
-                                :lazy-validation="lazy"
-                            >
-                                <v-text-field
-                                    v-model="name"
-                                    :rules="nameRules"
-                                    label="Nome"
-                                    required
-                                ></v-text-field>
-
-                                <v-text-field
-                                    v-model="email"
-                                    :rules="emailRules"
-                                    label="E-mail"
-                                    required
-                                ></v-text-field>
-
-                                <v-textarea
-                                    v-model="textArea"
-                                    :rules="textAreaRules"
-                                    label="Mensagem"
-                                    required
-                                />
-
-                                <v-btn
-                                    :disabled="!valid"
-                                    color="primary"
-                                    :dark="valid"
-                                    rounded
-                                    block
-                                    class="mt-3"
-                                    @click="submit"
-                                >
-                                    Enviar
-                                </v-btn>
-                            </v-form>
-                        </v-col>
+                        <!--<v-col cols="12" sm="7">
+                            <v-img :src="requiere('../ssets/img/local.jpeg')"/>
+                        </v-col>-->
                     </v-row>
                 </v-col>
             </v-row>

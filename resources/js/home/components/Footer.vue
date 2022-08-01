@@ -15,14 +15,13 @@
       </v-card-text>
 
       <v-card-text class="white--text pt-0">
-        Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-        Mauris cursus commodo interdum.
+        Encuentrenos tambien en nuestras redes sociales
       </v-card-text>
 
       <v-divider></v-divider>
 
       <v-card-text class="white--text">
-        {{ new Date().getFullYear() }} — <strong>Calango WEB</strong>
+        {{ new Date().getFullYear() }} — <strong>IDev</strong>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -43,16 +42,8 @@ export default {
         link: "",
       },
       {
-        text: "mdi-twitter",
-        link: "",
-      },
-      {
-        text: "mdi-linkedin",
-        link: "",
-      },
-      {
         text: "mdi-instagram",
-        link: "https://instagram.com/joabson_arley/",
+        link: "",
       },
     ],
   }),
