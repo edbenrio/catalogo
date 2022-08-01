@@ -102,7 +102,7 @@
 
 <style scoped>
 .v-toolbar {
-    transition: 0.6s;
+    transition: 0.4s;
 }
 
 .expand {
@@ -131,6 +131,7 @@ export default {
         flat: Boolean,
     },
     methods: {
+        ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
             this.isXs = window.innerWidth < 850;
         },
@@ -141,6 +142,7 @@ export default {
         goToProductList() {
             const path = `/listproducts`;
             if (this.$route.path !== path) this.$router.push(path);
+            this.setIsHomePasive();
         },
     },
 

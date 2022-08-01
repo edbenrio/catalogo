@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 import imageUrl from "../../assets/no-foto.png";
 
 export default {
@@ -69,14 +69,23 @@ export default {
     components: {},
     mounted() {
         this.getProducts();
+        this.isHomePage();
     },
     computed: {
         ...mapState("product", ["products"]),
+        ...mapState("app", ["isHome"]),
     },
     methods: {
         ...mapActions("product", ["getProducts", "buscarProductos"]),
+        ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         verProducto(id) {
             alert(id);
+        },
+        isHomePage() {
+            const path = `/listproducts`;
+            if (this.$route.path === path) {
+                this.setIsHomePasive();
+            }
         },
     },
 };

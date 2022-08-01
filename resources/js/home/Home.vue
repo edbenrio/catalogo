@@ -9,7 +9,7 @@
             <contact /> -->
             <router-view></router-view>
         </v-main>
-        <v-scale-transition>
+        <v-scale-transition v-if="isHome">
             <v-tooltip top>
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -51,6 +51,7 @@ import about from "./components/AboutSection";
 import download from "./components/DownloadSection";
 import pricing from "./components/PricingSection";
 import contact from "./components/ContactSection";
+import { mapState, mapMutations } from "vuex";
 
 export default {
     name: "App",
@@ -100,6 +101,9 @@ export default {
         toTop() {
             this.$vuetify.goTo(0);
         },
+    },
+    computed: {
+        ...mapState("app", ["isHome"]),
     },
 };
 </script>

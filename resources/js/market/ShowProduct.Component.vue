@@ -184,7 +184,7 @@
 </style>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
     data: () => ({
         carousel: "",
@@ -193,14 +193,15 @@ export default {
     components: {},
     mounted() {
         this.getOneProduct(this.product); //reemplazar con la ID del producto
-        console.log(this.product.product_detail.length > 0);
-        console.log(this.product);
+        this.isHomePage();
+        console.log(this.$route);
     },
     computed: {
         ...mapState("product", ["product"]),
     },
     methods: {
         ...mapActions("product", ["getOneProduct"]),
+        ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         setCarousel(i) {
             this.carousel = i;
         },
@@ -214,6 +215,12 @@ export default {
         },
         goToInsta() {},
         goTotelegram() {},
+        isHomePage() {
+            const path = `show`;
+            if (this.$route.name === path) {
+                this.setIsHomePasive();
+            }
+        },
     },
 };
 </script>

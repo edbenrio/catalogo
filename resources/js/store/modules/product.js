@@ -14,7 +14,7 @@ const state = {
         venta: 0,
         alquiler: 0,
         product_detail: [],
-        categories:[],
+        categories: [],
     },
     headers: [
         { text: "Nombre", value: "nombre", sortable: true, width: "150px" },
@@ -45,7 +45,6 @@ const actions = {
 
     async createProduct({ commit, dispatch }, params) {
         //si existe imagen crea esa imagen sino pasa linea
-        console.log(params);
 
         axios
             .post("/products", params)
@@ -103,21 +102,22 @@ const actions = {
             commit("GET_ONE_PRODUCT", response.data);
         });
     },
-    buscarProductos({state, commit}, buscador) {
-        if (state.setTimeoutBuscador) clearTimeout( state.setTimeoutBuscador )
-        state.setTimeoutBuscador = setTimeout(function(){
-            axios.get('/search_products', {
+    buscarProductos({ state, commit }, buscador) {
+        if (state.setTimeoutBuscador) clearTimeout(state.setTimeoutBuscador);
+        state.setTimeoutBuscador = setTimeout(function () {
+            axios
+                .get("/search_products", {
                     params: {
-                        buscador: buscador
-                    }
+                        buscador: buscador,
+                    },
                 })
-                .then( res => {
+                .then((res) => {
                     commit("GET_PRODUCTS", res.data);
                 })
-                .catch( error => {
-                    console.log('hay error: '+ error )
+                .catch((error) => {
+                    console.log("hay error: " + error);
                 });
-        }, 250)
+        }, 250);
     },
 };
 
