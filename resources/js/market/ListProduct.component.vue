@@ -46,7 +46,7 @@
                                     v-if="product.precio"
                                     class="text-h5 mb-1"
                                 >
-                                    Gs. {{ product.precio }}
+                                    {{convertMoney(product.precio)}}
                                 </v-card-subtitle>
 
                                 <v-card-text> </v-card-text>
@@ -99,6 +99,13 @@ export default {
             if (this.$route.path === path) {
                 this.setIsHomePasive();
             }
+        },
+        convertMoney(money) {
+            return parseFloat(money).toLocaleString("es-PY", {
+                style: "currency",
+                currency: "PYG",
+                minimumFractionDigits: 0,
+            });
         },
     },
 };
