@@ -18,7 +18,7 @@
                                         :key="i"
                                     >
                                         <v-img
-                                            :src="item.img_url"
+                                            :src="'../' + item.img_url"
                                             contain
                                             max-height="300"
                                         ></v-img>
@@ -36,7 +36,7 @@
                                     @click="carousel = i"
                                 >
                                     <v-img
-                                        :src="item.img_url"
+                                        :src="'../' + item.img_url"
                                         height="50"
                                         width="50"
                                     ></v-img>

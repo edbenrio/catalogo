@@ -35,7 +35,7 @@ const actions = {
                         to: "producto",
                     },
                     /* { text: "Imagen", to: "image" },*/
-                    { text: "Categoria", to: "category" },
+                    { text: "Categoria", to: "categoria" },
                 ],
             },
         ];

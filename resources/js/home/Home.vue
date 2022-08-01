@@ -4,7 +4,6 @@
         <v-main class="pt-0">
             <!-- <home />
             <about />
-            <download />
             <pricing />
             <contact /> -->
             <router-view></router-view>
@@ -61,7 +60,6 @@ export default {
         foote,
         home,
         about,
-        download,
         pricing,
         contact,
     },

@@ -17,9 +17,8 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >Calango</v-list-item-title
+                            >IDev</v-list-item-title
                         >
-                        <v-list-item-subtitle>WEB</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -56,7 +55,7 @@
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
-                    max-width="50px"
+                    max-width="180px"
                 />
             </v-toolbar-title>
             <template>
@@ -76,33 +75,23 @@
                 v-if="isXs"
             />
             <div v-else>
-                <v-btn
-                    to="/home"
-                    text
-                    @click="
-                        $vuetify.goTo('#hero');
-                        setIsHomeActive();
-                    "
-                >
-                    <span class="mr-2">Home</span>
+                <v-btn text @click="$vuetify.goTo('#hero')" class="sombra">
+                    <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#features')">
+                <v-btn text @click="$vuetify.goTo('#features')" class="sombra">
                     <span class="mr-2">Sobre</span>
                 </v-btn>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#download')">
-                    <span class="mr-2">Download</span>
-                </v-btn>
-                <v-btn to="/listproducts" text @click="setIsHomePasive">
-                    <span class="mr-2">Producto</span>
+                <v-btn text @click="$vuetify.goTo('#pricing')" class="sombra">
+                    <span class="mr-2">Productos y servicios</span>
                 </v-btn>
                 <v-btn
-                    v-if="isHome"
                     rounded
                     outlined
                     text
                     @click="$vuetify.goTo('#contact')"
+                    class="sombra"
                 >
-                    <span class="mr-2">Contate-nos</span>
+                    <span class="mr-2">Contacto</span>
                 </v-btn>
             </div>
         </v-app-bar>
@@ -118,6 +107,10 @@
     height: 80px !important;
     padding-top: 10px;
 }
+
+.sombra {
+    text-shadow: 1px 1px #020202;
+}
 </style>
 
 <script>
@@ -128,11 +121,10 @@ export default {
         drawer: null,
         isXs: false,
         items: [
-            ["mdi-home-outline", "Home", "#hero"],
+            ["mdi-home-outline", "Inicio", "#hero"],
             ["mdi-information-outline", "Sobre", "#features"],
-            ["mdi-download-box-outline", "Download", "#download"],
-            ["mdi-currency-usd", "Preços", "#pricing"],
-            ["mdi-email-outline", "Contatos", "#contact"],
+            ["mdi-archive", "Productos y Servicios", "#pricing"],
+            ["mdi-email-outline", "Contato", "#contact"],
         ],
     }),
     props: {
