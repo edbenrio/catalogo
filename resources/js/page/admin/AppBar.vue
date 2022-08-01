@@ -5,6 +5,9 @@
 
             <v-toolbar-title style="width: 300px" class="ml-4 pl-4">
                 <!--<span class="hidden-sm-and-down">{{user.name}}</span> -->
+                <v-btn :to="{ name: 'home' }" color="primary" dark>
+                    Inicio
+                </v-btn>
                 <v-btn :to="{ name: 'list' }" color="primary" dark>
                     Catalogo
                 </v-btn>
