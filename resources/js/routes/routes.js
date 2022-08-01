@@ -7,6 +7,7 @@ import Home from "../home/Home.vue";
 import Guest from "../home/Guest.vue";
 import listProduct from "../market/ListProduct.component.vue";
 import showProduct from "../market/ShowProduct.Component.vue";
+import pageNotFound from "../page/PageNotFound.Component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -61,6 +62,7 @@ const routes = [
             },
         ],
     },
+    { path: "*", component: pageNotFound },
 ];
 
 export default new VueRouter({
