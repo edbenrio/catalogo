@@ -95,7 +95,13 @@
                 <v-btn to="/listproducts" text @click="setIsHomePasive">
                     <span class="mr-2">Producto</span>
                 </v-btn>
-                <v-btn rounded outlined text @click="$vuetify.goTo('#contact')">
+                <v-btn
+                    v-if="isHome"
+                    rounded
+                    outlined
+                    text
+                    @click="$vuetify.goTo('#contact')"
+                >
                     <span class="mr-2">Contate-nos</span>
                 </v-btn>
             </div>

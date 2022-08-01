@@ -61,7 +61,7 @@
                         </p>
 
                         <h3 v-if="product.precio" class="text-warning">
-                            {{ product.precio }}
+                            Gs. {{ product.precio }}
                         </h3>
                         <v-divider class="grey"></v-divider>
                         <v-card-actions class="justify-center">
