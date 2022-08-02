@@ -200,7 +200,7 @@ export default {
         },
         goToWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en comprar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -208,7 +208,7 @@ export default {
         },
         goToCompraWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en comprar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -216,7 +216,7 @@ export default {
         },
         goToAlquilerWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en alquilar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -224,7 +224,7 @@ export default {
         },
         goToConsultaWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
