@@ -19,7 +19,7 @@
                                                 <div class="circle2">
                                                     <v-img
                                                         :src="
-                                                            require('../assets/img/paperplane.svg')
+                                                            require('../assets/img/carritocompras.png')
                                                         "
                                                     ></v-img>
                                                 </div>
@@ -28,19 +28,23 @@
                                         <div
                                             class="text--disabled text-uppercase text-h5 my-2"
                                         >
-                                            Venta
+                                            Comprar
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Concentrador de Oxigeno
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Aspiradores de secreciones
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Apnea del sueño
+                                        </div>
+                                        <v-divider class="my-2" />
+                                        <div class="text-uppercase blue--text">
+                                            Insumos y descartables
                                         </div>
                                         <v-divider class="my-2" />
                                         
@@ -73,7 +77,7 @@
                                                 <div class="circle2">
                                                     <v-img
                                                         :src="
-                                                            require('../assets/img/airplane.svg')
+                                                            require('../assets/img/alquilar.png')
                                                         "
                                                     />
                                                 </div>
@@ -86,15 +90,19 @@
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Concentrador de Oxigeno
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Aspiradores de secreciones
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            info
+                                            Apnea del sueño
+                                        </div>
+                                        <v-divider class="my-2" />
+                                        <div class="text-uppercase blue--text">
+                                            -
                                         </div>
                                         <v-divider class="my-2" />
                                         
