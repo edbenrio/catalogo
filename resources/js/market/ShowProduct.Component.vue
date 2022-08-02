@@ -20,7 +20,7 @@
                                         <v-img
                                             :src="'../' + item.img_url"
                                             contain
-                                            max-height="300"
+                                            max-height="500"
                                         ></v-img>
                                     </v-carousel-item>
                                 </v-carousel>
@@ -121,11 +121,11 @@
                     <v-btn fab class="mb-1 success" @click="goToWhatsapp">
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
-                    <v-btn fab class="mb-1 instagram text-white">
+                    <v-btn fab class="mb-1 instagram text-white" @click="goToInsta">
                         <v-icon>mdi-instagram </v-icon>
                     </v-btn>
-                    <v-btn fab class="info text-white">
-                        <v-icon>mdi-telegram </v-icon>
+                    <v-btn fab class="info text-white" @click="goToFace">
+                        <v-icon>mdi-facebook </v-icon>
                     </v-btn>
                 </v-layout>
             </template>
@@ -230,8 +230,18 @@ export default {
             window.open(link, "_blank");
             // window.location.href = link;
         },
-        goToInsta() {},
-        goTotelegram() {},
+        goToInsta() {
+            let link =
+                "https://instagram.com" ;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToFace() {
+            let link =
+                "https://facebook.com";
+            window.open(link, "_blank");
+            //window.location.href = link;
+        },
         isHomePage() {
             const path = `show`;
             if (this.$route.name === path) {
