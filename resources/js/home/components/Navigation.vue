@@ -107,7 +107,7 @@
                 <v-btn v-if="isHome" rounded outlined text @click="$vuetify.goTo('#contact')" class="sombra">
                     <span class="mr-2">Contacto</span>
                 </v-btn>
-                <v-btn v-else rounded outlined text href="/home/#contact" class="sombra">
+                <v-btn v-else rounded outlined text href="/home" class="sombra">
                     <span class="mr-2">Contacto</span>
                 </v-btn>
             </div>
@@ -145,7 +145,7 @@ export default {
         items: [
             ["mdi-home-outline", "Inicio", "/home"],
             ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contacto", "/home/#contact/"],
+            ["mdi-email-outline", "Contacto", "/home"],
         ],
         itemsNoHome: [
             ["mdi-home-outline", "Inicio", "/home"],
