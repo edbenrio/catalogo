@@ -25,17 +25,17 @@ const routes = [
                 component: Image,
             },*/
             {
-                path: "/producto",
-                name: "Producto",
+                path: "producto",
+                name: "producto",
                 component: Producto,
             },
             {
-                path: "/marca",
+                path: "marca",
                 name: "marca",
                 component: Marca,
             },
             {
-                path: "/category",
+                path: "categoria",
                 name: "categoria",
                 component: Category,
             },

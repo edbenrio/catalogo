@@ -14,17 +14,17 @@
                 </v-btn>
             </v-card-text>
 
-      <v-card-text class="white--text pt-0">
-        Encuentrenos tambien en nuestras redes sociales
-      </v-card-text>
+            <v-card-text class="white--text pt-0">
+                Encuentrenos tambien en nuestras redes sociales
+            </v-card-text>
 
             <v-divider></v-divider>
 
-      <v-card-text class="white--text">
-        {{ new Date().getFullYear() }} — <strong>IDev</strong>
-      </v-card-text>
-    </v-card>
-  </v-footer>
+            <v-card-text class="white--text">
+                {{ new Date().getFullYear() }} — <strong>IDev</strong>
+            </v-card-text>
+        </v-card>
+    </v-footer>
 </template>
 
 <style scoped>
@@ -36,18 +36,18 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  data: () => ({
-    icons: [
-      {
-        text: "mdi-facebook",
-        link: "",
-      },
-      {
-        text: "mdi-instagram",
-        link: "",
-      },
-    ],
-  }),
+    data: () => ({
+        icons: [
+            {
+                text: "mdi-facebook",
+                link: "",
+            },
+            {
+                text: "mdi-instagram",
+                link: "",
+            },
+        ],
+    }),
     computed: {
         ...mapState("app", ["isHome"]),
     },

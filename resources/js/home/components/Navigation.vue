@@ -75,16 +75,22 @@
                 v-if="isXs"
             />
             <div v-else>
-                <v-btn text @click="$vuetify.goTo('#hero')" class="sombra">
+                <v-btn v-if="isHome" text @click="$vuetify.goTo('#hero')" class="sombra">
                     <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn text @click="$vuetify.goTo('#features')" class="sombra">
-                    <span class="mr-2">Sobre</span>
+                <v-btn v-else text href="/home" class="sombra">
+                    <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn text @click="$vuetify.goTo('#pricing')" class="sombra">
+                <!--<v-btn text @click="$vuetify.goTo('#features')" class="sombra">
+                    <span class="mr-2">Sobre</span>
+                </v-btn>-->
+                <v-btn text href="/listproducts" class="sombra">
                     <span class="mr-2">Productos y servicios</span>
                 </v-btn>
-                <v-btn rounded outlined text @click="$vuetify.goTo('#contact')" class="sombra">
+                <v-btn v-if="isHome" rounded outlined text @click="$vuetify.goTo('#contact')" class="sombra">
+                    <span class="mr-2">Contacto</span>
+                </v-btn>
+                <v-btn v-else rounded outlined text href="/home/#contact" class="sombra">
                     <span class="mr-2">Contacto</span>
                 </v-btn>
             </div>
@@ -103,7 +109,7 @@
 }
 
 .sombra {
-  text-shadow: 1px 1px #020202;
+    text-shadow: 1px 1px #020202;
 }
 </style>
 
