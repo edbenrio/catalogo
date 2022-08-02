@@ -75,16 +75,43 @@
                 v-if="isXs"
             />
             <div v-else>
-                <v-btn text @click="$vuetify.goTo('#hero')" class="sombra">
+                <v-btn
+                    text
+                    :to="{ name: 'home' }"
+                    @click="
+                        setIsHomeActive();
+                        $vuetify.goTo('#hero');
+                    "
+                    class="sombra"
+                >
                     <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn text @click="$vuetify.goTo('#features')" class="sombra">
+                <v-btn
+                    v-if="isHome"
+                    text
+                    @click="$vuetify.goTo('#about')"
+                    class="sombra"
+                >
                     <span class="mr-2">Sobre</span>
                 </v-btn>
-                <v-btn text @click="$vuetify.goTo('#pricing')" class="sombra">
+                <v-btn
+                    v-if="isHome"
+                    text
+                    @click="$vuetify.goTo('#pricing')"
+                    class="sombra"
+                >
                     <span class="mr-2">Productos y servicios</span>
                 </v-btn>
                 <v-btn
+                    v-if="!isHome"
+                    text
+                    :to="{ name: 'list' }"
+                    class="sombra"
+                >
+                    <span class="mr-2">Catalogo</span>
+                </v-btn>
+                <v-btn
+                    v-if="isHome"
                     rounded
                     outlined
                     text

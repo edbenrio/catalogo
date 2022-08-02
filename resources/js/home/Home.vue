@@ -2,10 +2,6 @@
     <v-app>
         <navigation :color="color" :flat="flat" class="mb-16" />
         <v-main class="pt-0">
-            <!-- <home />
-            <about />
-            <pricing />
-            <contact /> -->
             <router-view></router-view>
         </v-main>
         <v-scale-transition v-if="isHome">
@@ -65,7 +61,7 @@ export default {
 
     data: () => ({
         fab: null,
-        color: "",
+        color: "#80DEEA",
         flat: null,
     }),
 
@@ -80,7 +76,7 @@ export default {
     watch: {
         fab(value) {
             if (value) {
-                this.color = "secondary";
+                this.color = "#B2DFDB";
                 this.flat = false;
             } else {
                 // this.color = "transparent";
