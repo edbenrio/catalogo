@@ -7,6 +7,7 @@ import Home from "../home/Home.vue";
 import Guest from "../home/Guest.vue";
 import listProduct from "../market/ListProduct.component.vue";
 import showProduct from "../market/ShowProduct.Component.vue";
+import pageNotFound from "../page/PageNotFound.Component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -24,17 +25,17 @@ const routes = [
                 component: Image,
             },*/
             {
-                path: "/producto",
-                name: "Producto",
+                path: "producto",
+                name: "producto",
                 component: Producto,
             },
             {
-                path: "/marca",
+                path: "marca",
                 name: "marca",
                 component: Marca,
             },
             {
-                path: "/category",
+                path: "categoria",
                 name: "categoria",
                 component: Category,
             },
@@ -61,6 +62,7 @@ const routes = [
             },
         ],
     },
+    { path: "*", component: pageNotFound },
 ];
 
 export default new VueRouter({

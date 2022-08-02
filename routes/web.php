@@ -23,12 +23,17 @@ Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('product_details', App\Http\Controllers\ProductDetailController::class);
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
+
 Route::middleware(['auth'])->group(function(){
     //Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
     Route::post('admin/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
     Route::post('/create_image', [App\Http\Controllers\ImageController::class, 'storeImage']);
-
+    Route::resource('image', App\Http\Controllers\ImageController::class);
     Route::get('admin', function(){
         return view('welcome'); 
     });

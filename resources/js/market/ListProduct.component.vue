@@ -11,6 +11,7 @@
                             lg="3"
                             md="4"
                             sm="12"
+                            cols="12"
                         >
                             <v-card
                                 class="my-3 mx-3 card-outter"
@@ -22,7 +23,7 @@
                             >
                                 <v-img
                                     :contain="true"
-                                    height="15  0px"
+                                    height="150px"
                                     :src="
                                         product.image.length > 0
                                             ? product.image[0].img_url
@@ -46,7 +47,7 @@
                                     v-if="product.precio"
                                     class="text-h5 mb-1"
                                 >
-                                    Gs. {{ product.precio }}
+                                    {{convertMoney(product.precio)}}
                                 </v-card-subtitle>
 
                                 <v-card-text> </v-card-text>
@@ -99,6 +100,13 @@ export default {
             if (this.$route.path === path) {
                 this.setIsHomePasive();
             }
+        },
+        convertMoney(money) {
+            return parseFloat(money).toLocaleString("es-PY", {
+                style: "currency",
+                currency: "PYG",
+                minimumFractionDigits: 0,
+            });
         },
     },
 };

@@ -42,7 +42,7 @@
                     <v-list-item
                         v-for="(group, i) in item.groups"
                         :key="i"
-                        :to="group.to"
+                        :to="{ name: group.to }"
                         style="text-decoration: none"
                         active-class="primary white--text"
                         link

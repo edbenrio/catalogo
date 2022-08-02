@@ -18,9 +18,9 @@
                                         :key="i"
                                     >
                                         <v-img
-                                            :src="item.img_url"
+                                            :src="'../' + item.img_url"
                                             contain
-                                            max-height="300"
+                                            max-height="500"
                                         ></v-img>
                                     </v-carousel-item>
                                 </v-carousel>
@@ -36,7 +36,7 @@
                                     @click="carousel = i"
                                 >
                                     <v-img
-                                        :src="item.img_url"
+                                        :src="'../' + item.img_url"
                                         height="50"
                                         width="50"
                                     ></v-img>
@@ -61,7 +61,7 @@
                         </p>
 
                         <h3 v-if="product.precio" class="text-warning">
-                            Gs. 150.000
+                            {{ convertMoney(product.precio) }}
                         </h3>
                         <v-divider class="grey"></v-divider>
                         <v-card-actions class="justify-center">
@@ -69,6 +69,7 @@
                                 <v-col>
                                     <v-btn
                                         v-if="product.venta"
+                                        @click="goToCompraWhatsapp"
                                         class="bg-success text-white"
                                         >Comprar</v-btn
                                     >
@@ -76,12 +77,15 @@
                                 <v-col>
                                     <v-btn
                                         v-if="product.alquiler"
+                                        @click="goToAlquilerWhatsapp"
                                         class="bg-primary text-white"
                                         >Alquilar</v-btn
                                     >
                                 </v-col>
                                 <v-col>
-                                    <v-btn class="bg-info text-white"
+                                    <v-btn
+                                        class="bg-info text-white"
+                                        @click="goToConsultaWhatsapp"
                                         >Consultar</v-btn
                                     >
                                 </v-col>
@@ -96,17 +100,7 @@
                         </h3>
                         <v-simple-table>
                             <template v-slot:default>
-                                <!--    <thead>
-                                <tr>
-                                <th class="text-left">
-                                    Name
-                                </th>
-                                <th class="text-left">
-                                    Calories
-                                </th>
-                                </tr>
-                            </thead> -->
-                                <!-- <tbody>
+                                <tbody>
                                     <tr
                                         v-for="(
                                             item, index
@@ -116,7 +110,7 @@
                                         <td>{{ item.campo_nombre }}</td>
                                         <td>{{ item.campo_detalle }}</td>
                                     </tr>
-                                </tbody> -->
+                                </tbody>
                             </template>
                         </v-simple-table>
                     </template>
@@ -127,11 +121,11 @@
                     <v-btn fab class="mb-1 success" @click="goToWhatsapp">
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
-                    <v-btn fab class="mb-1 instagram text-white">
+                    <v-btn fab class="mb-1 instagram text-white" @click="goToInsta">
                         <v-icon>mdi-instagram </v-icon>
                     </v-btn>
-                    <v-btn fab class="info text-white">
-                        <v-icon>mdi-telegram </v-icon>
+                    <v-btn fab class="info text-white" @click="goToFace">
+                        <v-icon>mdi-facebook </v-icon>
                     </v-btn>
                 </v-layout>
             </template>
@@ -189,12 +183,12 @@ export default {
     data: () => ({
         carousel: "",
         desserts: {},
+        fab: false,
     }),
     components: {},
     mounted() {
-        this.getOneProduct(this.product); //reemplazar con la ID del producto
+        this.getOneProduct(this.$route.params); //reemplazar con la ID del producto
         this.isHomePage();
-        console.log(this.$route);
     },
     computed: {
         ...mapState("product", ["product"]),
@@ -207,19 +201,60 @@ export default {
         },
         goToWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en comprar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
             // window.location.href = link;
         },
-        goToInsta() {},
-        goTotelegram() {},
+        goToCompraWhatsapp() {
+            let link =
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
+                "Hola, estoy interesado en comprar este producto: " +
+                this.product.nombre;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToAlquilerWhatsapp() {
+            let link =
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
+                "Hola, estoy interesado en alquilar este producto: " +
+                this.product.nombre;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToConsultaWhatsapp() {
+            let link =
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
+                "Hola, estoy interesado en este producto: " +
+                this.product.nombre;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToInsta() {
+            let link =
+                "https://instagram.com" ;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToFace() {
+            let link =
+                "https://facebook.com";
+            window.open(link, "_blank");
+            //window.location.href = link;
+        },
         isHomePage() {
             const path = `show`;
             if (this.$route.name === path) {
                 this.setIsHomePasive();
             }
+        },
+        convertMoney(money) {
+            return parseFloat(money).toLocaleString("es-PY", {
+                style: "currency",
+                currency: "PYG",
+                minimumFractionDigits: 0,
+            });
         },
     },
 };

@@ -2,11 +2,6 @@
     <v-app>
         <navigation :color="color" :flat="flat" class="mb-16" />
         <v-main class="pt-0">
-            <!-- <home />
-            <about />
-            <download />
-            <pricing />
-            <contact /> -->
             <router-view></router-view>
         </v-main>
         <v-scale-transition v-if="isHome">
@@ -20,7 +15,7 @@
                         bottom
                         right
                         color="#25D366"
-                        href="https://wa.me/595984800216?text=I'm%20interested%20in%20your%20car%20for%20sale"
+                        href="https://wa.me/595985373100?text=Estoy interesado en sus productos"
                         v-bind="attrs"
                         v-on="on"
                     >
@@ -48,7 +43,6 @@ import navigation from "./components/Navigation";
 import foote from "./components/Footer";
 import home from "./components/HomeSection";
 import about from "./components/AboutSection";
-import download from "./components/DownloadSection";
 import pricing from "./components/PricingSection";
 import contact from "./components/ContactSection";
 import { mapState, mapMutations } from "vuex";
@@ -61,33 +55,32 @@ export default {
         foote,
         home,
         about,
-        download,
         pricing,
         contact,
     },
 
     data: () => ({
-        fab: null,
-        color: "",
+        fab: false,
+        color: "#01579B",
         flat: null,
     }),
 
     created() {
         const top = window.pageYOffset || 0;
-        // if (top <= 60) {
-        // this.color = "transparent";
-        //     this.flat = true;
-        // }
+        if (top <= 60) {
+            //this.color = "transparent";
+            this.flat = true;
+        }
     },
 
     watch: {
         fab(value) {
             if (value) {
-                this.color = "secondary";
+                this.color = "#01579B";
                 this.flat = false;
             } else {
-                // this.color = "transparent";
-                //this.flat = true;
+                //this.color = "transparent";
+                this.flat = true;
             }
         },
     },

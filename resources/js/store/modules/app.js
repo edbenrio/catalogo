@@ -35,7 +35,7 @@ const actions = {
                         to: "producto",
                     },
                     /* { text: "Imagen", to: "image" },*/
-                    { text: "Categoria", to: "category" },
+                    { text: "Categoria", to: "categoria" },
                 ],
             },
         ];
@@ -102,7 +102,7 @@ const actions = {
     },
     logout() {
         axios.post("logout").then((response) => {
-            window.location.href = "/";
+            window.location.href = "/home";
         });
     },
 };

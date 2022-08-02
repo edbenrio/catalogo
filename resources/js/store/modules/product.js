@@ -25,6 +25,7 @@ const state = {
             width: "150px",
         },
         { text: "Codigo", value: "codigo", sortable: false, width: "150px" },
+        { text: "Precio", value: "precio", sortable: false, width: "150px" },
         { text: "Marca", value: "brand_id", sortable: false, width: "150px" },
         { text: "Opciones", value: "actions", sortable: false, width: "150px" },
     ],

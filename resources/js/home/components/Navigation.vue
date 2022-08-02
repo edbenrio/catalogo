@@ -17,9 +17,8 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >Calango</v-list-item-title
+                            >IDev</v-list-item-title
                         >
-                        <v-list-item-subtitle>WEB</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -49,14 +48,13 @@
             app
             :color="color"
             :flat="flat"
-            dark
             class="px-15"
             :class="{ expand: flat }"
         >
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
-                    max-width="50px"
+                    max-width="180px"
                 />
             </v-toolbar-title>
             <template>
@@ -75,25 +73,40 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div v-else>
+            <div>
                 <v-btn
-                    to="/home"
                     text
+                    dark
+                    :to="{ name: 'home' }"
                     @click="
-                        $vuetify.goTo('#hero');
                         setIsHomeActive();
+                        $vuetify.goTo('#hero');
                     "
                 >
-                    <span class="mr-2">Home</span>
+                    <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#features')">
+                <v-btn v-if="isHome" text dark @click="$vuetify.goTo('#about')">
                     <span class="mr-2">Sobre</span>
                 </v-btn>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#download')">
-                    <span class="mr-2">Download</span>
+                <v-btn
+                    v-if="isHome"
+                    text
+                    dark
+                    @click="$vuetify.goTo('#pricing')"
+                >
+                    <span class="mr-2">Productos y servicios</span>
                 </v-btn>
-                <v-btn to="/listproducts" text @click="setIsHomePasive">
-                    <span class="mr-2">Producto</span>
+                <v-btn text dark :to="{ name: 'list' }">
+                    <span class="mr-2">Catalogo</span>
+                </v-btn>
+                <v-btn
+                    v-if="isHome"
+                    dark
+                    rounded
+                    outlined
+                    @click="$vuetify.goTo('#contact')"
+                >
+                    <span class="mr-2">Contacto</span>
                 </v-btn>
             </div>
         </v-app-bar>
@@ -109,6 +122,10 @@
     height: 80px !important;
     padding-top: 10px;
 }
+
+.sombra {
+    color: #001d6e;
+}
 </style>
 
 <script>
@@ -119,11 +136,10 @@ export default {
         drawer: null,
         isXs: false,
         items: [
-            ["mdi-home-outline", "Home", "#hero"],
+            ["mdi-home-outline", "Inicio", "#hero"],
             ["mdi-information-outline", "Sobre", "#features"],
-            ["mdi-download-box-outline", "Download", "#download"],
-            ["mdi-currency-usd", "Preços", "#pricing"],
-            ["mdi-email-outline", "Contatos", "#contact"],
+            ["mdi-archive", "Productos y Servicios", "#pricing"],
+            ["mdi-email-outline", "Contato", "#contact"],
         ],
     }),
     props: {
@@ -133,7 +149,7 @@ export default {
     methods: {
         ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 
