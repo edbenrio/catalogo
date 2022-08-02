@@ -7,43 +7,27 @@
                         <v-col cols="12" md="7">
                             <h1 class="font-weight-light display-2">Mas sobre nosotros</h1>
                             <h1 class="font-weight-light display-1 mb-3">
-                                Itapua Medical
+                                Itapúa Medical S.A
                             </h1>
                             <v-row>
-                                <v-col cols="12" class="d-flex align-center">
-                                    <v-img
-                                        :src="
-                                            require('../assets/img/icon1.svg')
-                                        "
-                                        max-width="60px"
-                                        class="mr-4"
-                                    />
+                                <v-col cols="12" class="d-flex align-center subtittle">
                                     <p class="text-justify">
-                                        informacion sobre
+                                        Empresa fundada en el año 2013.
                                     </p>
                                 </v-col>
-                                <v-col cols="12" class="d-flex align-center">
-                                    <v-img
-                                        :src="
-                                            require('../assets/img/icon2.svg')
-                                        "
-                                        max-width="60px"
-                                        class="mr-4"
-                                    />
+                                <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
-                                        informacion
+                                        Nuestra principal actividad se centra en el campo de la sanidad y salud.
+                                        Somos importadores, distribuidores de dispositivos médicos, materiales 
+                                        cortopunzantes y equipos de proteccion individual.
                                     </p>
                                 </v-col>
-                                <v-col cols="12" class="d-flex align-center">
-                                    <v-img
-                                        :src="
-                                            require('../assets/img/icon3.svg')
-                                        "
-                                        max-width="60px"
-                                        class="mr-4"
-                                    />
+                                <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
-                                        mas info
+                                        Taller de servicio de mantenimiento técnico. Especializados en equipos de 
+                                        oxigeno medicinal, aspiraciones y apnea.
+                                        Distribuidores y servicio técnico de plantas de oxigeno Medicinal (PSA)
+                                        de la firma <b>SYSADVANCE</b>
                                     </p>
                                 </v-col>
                             </v-row>
@@ -65,5 +49,11 @@
 <style scoped>
 #about {
     background-color: #ffffff;
+}
+.subtittle {
+    font-size: 20px;
+}
+.size {
+    font-size: 15px;
 }
 </style>
