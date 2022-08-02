@@ -20,15 +20,18 @@
                                 25 de mayo Encarnacion-Paraguay 
                             </h3>
                             <h3 class="font-weight-light mt-3">
-                                Telefone: +xx (xx) xxxxx-xxxx
+                                Telefono: +595 985 252921<br/>
+                                Telefono: +595 985 373100
                             </h3>
                             <h3 class="font-weight-light">
-                                Email: email@email.com
+                                Email: itapuamedical@gmail.com
                             </h3>
                         </v-col>
-                        <!--<v-col cols="12" sm="7">
-                            <v-img :src="requiere('../ssets/img/local.jpeg')"/>
-                        </v-col>-->
+                        <v-col cols="12" sm="7">
+                            <a href="http://www.stackoverflow.com " target="_blank">
+                            <v-img :src="require('../assets/img/local.jpeg')"/>
+                            </a>
+                        </v-col>
                     </v-row>
                 </v-col>
             </v-row>
@@ -47,7 +50,7 @@
 
             <template v-slot:action="{ attrs }">
                 <v-btn text v-bind="attrs" @click="snackbar.enabled = false">
-                    Fechar
+                    cerrar
                 </v-btn>
             </template>
         </v-snackbar>

@@ -20,7 +20,7 @@
                                         <v-img
                                             :src="'../' + item.img_url"
                                             contain
-                                            max-height="300"
+                                            max-height="500"
                                         ></v-img>
                                     </v-carousel-item>
                                 </v-carousel>
@@ -121,11 +121,11 @@
                     <v-btn fab class="mb-1 success" @click="goToWhatsapp">
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
-                    <v-btn fab class="mb-1 instagram text-white">
+                    <v-btn fab class="mb-1 instagram text-white" @click="goToInsta">
                         <v-icon>mdi-instagram </v-icon>
                     </v-btn>
-                    <v-btn fab class="info text-white">
-                        <v-icon>mdi-telegram </v-icon>
+                    <v-btn fab class="info text-white" @click="goToFace">
+                        <v-icon>mdi-facebook </v-icon>
                     </v-btn>
                 </v-layout>
             </template>
@@ -201,7 +201,7 @@ export default {
         },
         goToWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en comprar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -209,7 +209,7 @@ export default {
         },
         goToCompraWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en comprar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -217,7 +217,7 @@ export default {
         },
         goToAlquilerWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en alquilar este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
@@ -225,14 +225,24 @@ export default {
         },
         goToConsultaWhatsapp() {
             let link =
-                "https://api.whatsapp.com/send?phone=595995360910&text=" +
+                "https://api.whatsapp.com/send?phone=595985373100&text=" +
                 "Hola, estoy interesado en este producto: " +
                 this.product.nombre;
             window.open(link, "_blank");
             // window.location.href = link;
         },
-        goToInsta() {},
-        goTotelegram() {},
+        goToInsta() {
+            let link =
+                "https://instagram.com" ;
+            window.open(link, "_blank");
+            // window.location.href = link;
+        },
+        goToFace() {
+            let link =
+                "https://facebook.com";
+            window.open(link, "_blank");
+            //window.location.href = link;
+        },
         isHomePage() {
             const path = `show`;
             if (this.$route.name === path) {

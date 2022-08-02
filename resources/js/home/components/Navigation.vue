@@ -65,7 +65,6 @@
                     @keyup="buscarProductos(searchProduct)"
                     @click="goToProductList"
                     placeholder="Buscar Producto"
-                    color="secondary"
                 ></v-text-field>
             </template>
             <v-spacer />
@@ -74,7 +73,7 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div v-else>
+            <div>
                 <v-btn
                     text
                     dark
