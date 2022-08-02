@@ -19,6 +19,9 @@ class CreateProductDetailsTable extends Migration
             $table->string('campo_nombre');
             $table->string('campo_detalle');
 
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+
             $table->softDeletes();
             $table->timestamps();
         });

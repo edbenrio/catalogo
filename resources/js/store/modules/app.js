@@ -19,6 +19,7 @@ const state = {
     canCreate: false,
     canEdit: false,
     canDelete: false,
+    isHome: true,
 };
 
 const actions = {
@@ -33,7 +34,8 @@ const actions = {
 
                         to: "producto",
                     },
-                    { text: "Imagen", to: "image" },
+                    /* { text: "Imagen", to: "image" },*/
+                    { text: "Categoria", to: "categoria" },
                 ],
             },
         ];
@@ -100,12 +102,18 @@ const actions = {
     },
     logout() {
         axios.post("logout").then((response) => {
-            window.location.href = "/";
+            window.location.href = "/home";
         });
     },
 };
 
 const mutations = {
+    setIsHomeActive(state) {
+        state.isHome = true;
+    },
+    setIsHomePasive(state) {
+        state.isHome = false;
+    },
     setDrawer(state) {
         state.drawer = !state.drawer;
     },

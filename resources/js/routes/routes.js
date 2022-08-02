@@ -1,7 +1,13 @@
 import Producto from "../page/admin/product/Producto.Component.vue";
+import Category from "../page/admin/category/Category.Component.vue";
 import Image from "../page/admin/image/Image.Component.vue";
-import Marca from "../page/admin/marca/Marca.Component.vue";
+import Marca from "../page/admin/brand/Marca.Component.vue";
 import Dashboard from "../page/admin/Dashboard.vue";
+import Home from "../home/Home.vue";
+import Guest from "../home/Guest.vue";
+import listProduct from "../market/ListProduct.component.vue";
+import showProduct from "../market/ShowProduct.Component.vue";
+import pageNotFound from "../page/PageNotFound.Component.vue";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
@@ -13,14 +19,14 @@ const routes = [
         path: "/admin",
         component: Dashboard,
         children: [
-            {
-                path: "image",
+            /* {
+                path: "/image",
                 name: "Image",
                 component: Image,
-            },
+            },*/
             {
                 path: "producto",
-                name: "Producto",
+                name: "producto",
                 component: Producto,
             },
             {
@@ -28,8 +34,35 @@ const routes = [
                 name: "marca",
                 component: Marca,
             },
+            {
+                path: "categoria",
+                name: "categoria",
+                component: Category,
+            },
         ],
     },
+    {
+        path: "/",
+        component: Home,
+        children: [
+            {
+                path: "home",
+                component: Guest,
+                name: "home",
+            },
+            {
+                path: "listproducts",
+                component: listProduct,
+                name: "list",
+            },
+            {
+                path: "showproduct/:id",
+                component: showProduct,
+                name: "show",
+            },
+        ],
+    },
+    { path: "*", component: pageNotFound },
 ];
 
 export default new VueRouter({
