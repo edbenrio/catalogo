@@ -145,12 +145,12 @@ export default {
         items: [
             ["mdi-home-outline", "Inicio", "/home"],
             ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contacto", "/home/#contact"],
+            ["mdi-email-outline", "Contacto", "/home/#contact/"],
         ],
         itemsNoHome: [
             ["mdi-home-outline", "Inicio", "/home"],
             ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contacto", "/home/#contact"],
+            ["mdi-email-outline", "Contacto", "/home"],
         ],
     }),
     props: {
