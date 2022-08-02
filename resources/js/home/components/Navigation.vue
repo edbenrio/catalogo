@@ -48,7 +48,6 @@
             app
             :color="color"
             :flat="flat"
-            dark
             class="px-15"
             :class="{ expand: flat }"
         >
@@ -66,6 +65,7 @@
                     @keyup="buscarProductos(searchProduct)"
                     @click="goToProductList"
                     placeholder="Buscar Producto"
+                    color="secondary"
                 ></v-text-field>
             </template>
             <v-spacer />
@@ -77,46 +77,35 @@
             <div v-else>
                 <v-btn
                     text
+                    dark
                     :to="{ name: 'home' }"
                     @click="
                         setIsHomeActive();
                         $vuetify.goTo('#hero');
                     "
-                    class="sombra"
                 >
                     <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn
-                    v-if="isHome"
-                    text
-                    @click="$vuetify.goTo('#about')"
-                    class="sombra"
-                >
+                <v-btn v-if="isHome" text dark @click="$vuetify.goTo('#about')">
                     <span class="mr-2">Sobre</span>
                 </v-btn>
                 <v-btn
                     v-if="isHome"
                     text
+                    dark
                     @click="$vuetify.goTo('#pricing')"
-                    class="sombra"
                 >
                     <span class="mr-2">Productos y servicios</span>
                 </v-btn>
-                <v-btn
-                    v-if="!isHome"
-                    text
-                    :to="{ name: 'list' }"
-                    class="sombra"
-                >
+                <v-btn text dark :to="{ name: 'list' }">
                     <span class="mr-2">Catalogo</span>
                 </v-btn>
                 <v-btn
                     v-if="isHome"
+                    dark
                     rounded
                     outlined
-                    text
                     @click="$vuetify.goTo('#contact')"
-                    class="sombra"
                 >
                     <span class="mr-2">Contacto</span>
                 </v-btn>
@@ -136,7 +125,7 @@
 }
 
 .sombra {
-    text-shadow: 1px 1px #020202;
+    color: #001d6e;
 }
 </style>
 
@@ -161,7 +150,7 @@ export default {
     methods: {
         ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 

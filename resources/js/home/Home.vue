@@ -60,27 +60,27 @@ export default {
     },
 
     data: () => ({
-        fab: null,
-        color: "#80DEEA",
+        fab: false,
+        color: "#01579B",
         flat: null,
     }),
 
     created() {
         const top = window.pageYOffset || 0;
-        // if (top <= 60) {
-        // this.color = "transparent";
-        //     this.flat = true;
-        // }
+        if (top <= 60) {
+            //this.color = "transparent";
+            this.flat = true;
+        }
     },
 
     watch: {
         fab(value) {
             if (value) {
-                this.color = "#B2DFDB";
+                this.color = "#01579B";
                 this.flat = false;
             } else {
-                // this.color = "transparent";
-                //this.flat = true;
+                //this.color = "transparent";
+                this.flat = true;
             }
         },
     },

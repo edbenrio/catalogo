@@ -183,6 +183,7 @@ export default {
     data: () => ({
         carousel: "",
         desserts: {},
+        fab: false,
     }),
     components: {},
     mounted() {
