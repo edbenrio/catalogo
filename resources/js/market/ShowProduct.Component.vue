@@ -20,7 +20,7 @@
                                         <v-img
                                             :src="'../' + item.img_url"
                                             contain
-                                            max-height="300"
+                                            max-height="500"
                                         ></v-img>
                                     </v-carousel-item>
                                 </v-carousel>
