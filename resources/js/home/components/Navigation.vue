@@ -25,12 +25,29 @@
 
             <v-divider />
 
-            <v-list dense>
+            <v-list dense v-if="isHome">
                 <v-list-item
                     v-for="([icon, text, link], i) in items"
                     :key="i"
                     link
                     @click="$vuetify.goTo(link)"
+                >
+                    <v-list-item-icon class="justify-center">
+                        <v-icon>{{ icon }}</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                        <v-list-item-title class="subtitile-1">{{
+                            text
+                        }}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+            <v-list dense v-else>
+                <v-list-item
+                    v-for="([icon, text, link], i) in itemsNoHome"
+                    :key="i"
+                    link
+                    :href="link"
                 >
                     <v-list-item-icon class="justify-center">
                         <v-icon>{{ icon }}</v-icon>
@@ -122,9 +139,14 @@ export default {
         isXs: false,
         items: [
             ["mdi-home-outline", "Inicio", "#hero"],
-            ["mdi-information-outline", "Sobre", "#features"],
+            /*["mdi-information-outline", "Sobre", "#features"],*/
             ["mdi-archive", "Productos y Servicios", "#pricing"],
             ["mdi-email-outline", "Contato", "#contact"],
+        ],
+        itemsNoHome: [
+            ["mdi-home-outline", "Inicio", "/home"],
+            ["mdi-archive", "Productos y Servicios", "/listproducts"],
+            ["mdi-email-outline", "Contato", "/home/#contact"],
         ],
     }),
     props: {
