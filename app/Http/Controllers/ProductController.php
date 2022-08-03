@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Image;
 use App\Models\ProductDetail;
 use File;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -105,7 +106,9 @@ class ProductController extends Controller
             ->with('categories')
             ->with('productDetail')
             ->find($id);
-        return $product;
+        return view ('showProduct')->with('product',$product);
+        //return View::make('home', ['product' => 'holaa']) ;
+        //return view('home', ['product' => 'holaa']);;
     }
 
     /**

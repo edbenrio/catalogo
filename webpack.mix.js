@@ -12,7 +12,8 @@ const path = require("path");
  */
 
 mix.js("resources/js/app.js", "public/js")
-    .vue()
+    
+    .js('resources/js/product.js', 'public/js').vue()
     .sass("resources/sass/app.scss", "public/css")
     .copyDirectory("resources/assets/", "public/images/")
     .sourceMaps();

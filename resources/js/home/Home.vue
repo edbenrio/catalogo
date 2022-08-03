@@ -16,6 +16,7 @@
                         right
                         color="#25D366"
                         href="https://wa.me/595985373100?text=Estoy interesado en sus productos"
+                        target="_blank"
                         v-bind="attrs"
                         v-on="on"
                     >
