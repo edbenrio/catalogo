@@ -23,6 +23,10 @@ Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('products', App\Http\Controllers\ProductController::class);
 Route::resource('product_details', App\Http\Controllers\ProductDetailController::class);
 
+Route::get('admino', function(){
+    return view('home'); 
+});
+
 Auth::routes([
     'register' => false, // Registration Routes...
     'reset' => false, // Password Reset Routes...
