@@ -108,6 +108,10 @@
                 >
                     <span class="mr-2">Contacto</span>
                 </v-btn>
+
+                <v-btn v-if="isHome" dark rounded outlined>
+                    <span class="mr-2">Nuevo</span>
+                </v-btn>
             </div>
         </v-app-bar>
     </div>

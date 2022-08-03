@@ -14,9 +14,11 @@
 
     </head>
     <body>
+
         <div id="app">
             <main-content></main-content>
         </div>
         <script src="{{ mix('js/app.js') }}"></script>
+
     </body>
 </html>
