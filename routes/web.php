@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return redirect('/home');
 });
+
 Route::get('/search_products',[App\Http\Controllers\ProductController::class, 'search']);
 
 Route::resource('brands', App\Http\Controllers\BrandController::class);

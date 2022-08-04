@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-app>
-            <navigation :color="color" :flat="flat" class="mb-16" />
+            <navigation class="mb-16" />
             <v-container>
                 <v-row class="mb-5">
                     <v-col class="col-md-5 col-sm-12 col-12">
@@ -96,9 +96,7 @@
                 </v-row>
                 <v-row class="my-10">
                     <template>
-                        <h3 v-if="product.product_detail">
-                            Especificaciones
-                        </h3>
+                        <h3 v-if="product.product_detail">Especificaciones</h3>
                         <v-simple-table>
                             <template v-slot:default>
                                 <tbody>
@@ -122,7 +120,11 @@
                     <v-btn fab class="mb-1 success" @click="goToWhatsapp">
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
-                    <v-btn fab class="mb-1 instagram text-white" @click="goToInsta">
+                    <v-btn
+                        fab
+                        class="mb-1 instagram text-white"
+                        @click="goToInsta"
+                    >
                         <v-icon>mdi-instagram </v-icon>
                     </v-btn>
                     <v-btn fab class="info text-white" @click="goToFace">
@@ -185,17 +187,14 @@ export default {
     data: () => ({
         carousel: "",
         desserts: {},
-        isHome: false
+
         //product:{}
     }),
     components: {
-        navigation
+        navigation,
     },
-    props: ['product'],
+    props: ["product"],
     mounted() {
-        console.log(this.product);
-
-
         //this.getOneProduct(this.$route.params); //reemplazar con la ID del producto
         //this.isHomePage();
     },
@@ -241,22 +240,14 @@ export default {
             // window.location.href = link;
         },
         goToInsta() {
-            let link =
-                "https://instagram.com" ;
+            let link = "https://instagram.com";
             window.open(link, "_blank");
             // window.location.href = link;
         },
         goToFace() {
-            let link =
-                "https://facebook.com";
+            let link = "https://facebook.com";
             window.open(link, "_blank");
             //window.location.href = link;
-        },
-        isHomePage() {
-            const path = `show`;
-            if (this.$route.name === path) {
-                this.setIsHomePasive();
-            }
         },
         convertMoney(money) {
             return parseFloat(money).toLocaleString("es-PY", {

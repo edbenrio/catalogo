@@ -7,7 +7,10 @@ window.Vue = require("vue").default;
 
 Vue.use(Vuetify);
 
-Vue.component("mostrar-producto", require("./market/ShowProductBlade.Component.vue").default);
+Vue.component(
+    "mostrar-producto",
+    require("./market/ShowProductBlade.Component.vue").default
+);
 
 const app = new Vue({
     el: "#app2",
@@ -17,9 +20,9 @@ const app = new Vue({
                 light: {
                     primary: "#119DA4",
                     secondary: "#171b34",
-                    accent: "3D87E4"
-                }
-            }
-        }
-    })  
+                    accent: "3D87E4",
+                },
+            },
+        },
+    }),
 });

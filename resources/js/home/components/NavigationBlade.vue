@@ -25,7 +25,7 @@
 
             <v-divider />
 
-            <v-list dense v-if="isHome">
+            <v-list dense>
                 <v-list-item
                     v-for="([icon, text, link], i) in items"
                     :key="i"
@@ -42,33 +42,9 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
-            <v-list dense v-else>
-                <v-list-item
-                    v-for="([icon, text, link], i) in itemsNoHome"
-                    :key="i"
-                    link
-                    :href="link"
-                >
-                    <v-list-item-icon class="justify-center">
-                        <v-icon>{{ icon }}</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                        <v-list-item-title class="subtitile-1">{{
-                            text
-                        }}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar
-            app
-            :color="color"
-            :flat="flat"
-            dark
-            class="px-15"
-            :class="{ expand: flat }"
-        >
+        <v-app-bar app color="#01579B" :flat="true" dark class="px-15">
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
@@ -91,24 +67,12 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div v-else>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#hero')" class="sombra">
+            <div>
+                <v-btn text href="/home" class="sombra">
                     <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn v-else text href="/home" class="sombra">
-                    <span class="mr-2">Inicio</span>
-                </v-btn>
-                <!--<v-btn text @click="$vuetify.goTo('#features')" class="sombra">
-                    <span class="mr-2">Sobre</span>
-                </v-btn>-->
                 <v-btn text href="/listproducts" class="sombra">
-                    <span class="mr-2">Productos y servicios</span>
-                </v-btn>
-                <v-btn v-if="isHome" rounded outlined text @click="$vuetify.goTo('#contact')" class="sombra">
-                    <span class="mr-2">Contacto</span>
-                </v-btn>
-                <v-btn v-else rounded outlined text href="/home" class="sombra">
-                    <span class="mr-2">Contacto</span>
+                    <span class="mr-2">Catalogo</span>
                 </v-btn>
             </div>
         </v-app-bar>
@@ -137,6 +101,7 @@ export default {
         searchProduct: "",
         drawer: null,
         isXs: false,
+
         /*items: [
             ["mdi-home-outline", "Inicio", "#hero"],
             ["mdi-archive", "Productos y Servicios", "#pricing"],
@@ -145,20 +110,14 @@ export default {
         items: [
             ["mdi-home-outline", "Inicio", "/home"],
             ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contacto", "/home"],
         ],
         itemsNoHome: [
             ["mdi-home-outline", "Inicio", "/home"],
             ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contacto", "/home"],
         ],
     }),
-    props: {
-        color: String,
-        flat: Boolean,
-    },
     methods: {
-       // ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
+        // ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
             this.isXs = window.innerWidth < 850;
         },
@@ -169,7 +128,6 @@ export default {
         goToProductList() {
             const path = `/listproducts`;
             if (this.$route.path !== path) this.$router.push(path);
-            this.setIsHomePasive();
         },
     },
 
