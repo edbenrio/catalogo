@@ -54,6 +54,7 @@
                                             outlined
                                             color="blue"
                                             class="mt-6"
+                                            :to="{ name: 'list' }"
                                         >
                                             Catalogo
                                         </v-btn>
@@ -112,6 +113,7 @@
                                             outlined
                                             color="blue"
                                             class="mt-6"
+                                            :to="{ name: 'list' }"
                                         >
                                             Servicios
                                         </v-btn>

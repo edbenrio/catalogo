@@ -80,7 +80,6 @@ const actions = {
                 commit("DELETE_CATEGORY", params);
             })
             .catch((error) => {
-                console.log(error.response.data);
                 alert(error.response.data);
             });
 

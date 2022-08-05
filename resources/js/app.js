@@ -44,9 +44,9 @@ const app = new Vue({
                 light: {
                     primary: "#119DA4",
                     secondary: "#171b34",
-                    accent: "3D87E4"
-                }
-            }
-        }
-    })  
+                    accent: "3D87E4",
+                },
+            },
+        },
+    }),
 });

@@ -25,29 +25,12 @@
 
             <v-divider />
 
-            <v-list dense v-if="isHome">
+            <v-list dense>
                 <v-list-item
                     v-for="([icon, text, link], i) in items"
                     :key="i"
                     link
                     @click="$vuetify.goTo(link)"
-                >
-                    <v-list-item-icon class="justify-center">
-                        <v-icon>{{ icon }}</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                        <v-list-item-title class="subtitile-1">{{
-                            text
-                        }}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-list>
-            <v-list dense v-else>
-                <v-list-item
-                    v-for="([icon, text, link], i) in itemsNoHome"
-                    :key="i"
-                    link
-                    :href="link"
                 >
                     <v-list-item-icon class="justify-center">
                         <v-icon>{{ icon }}</v-icon>
@@ -65,7 +48,6 @@
             app
             :color="color"
             :flat="flat"
-            dark
             class="px-15"
             :class="{ expand: flat }"
         >
@@ -91,23 +73,39 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div v-else>
-                <v-btn v-if="isHome" text @click="$vuetify.goTo('#hero')" class="sombra">
+            <div>
+                <v-btn
+                    text
+                    dark
+                    :to="{ name: 'home' }"
+                    @click="
+                        setIsHomeActive();
+                        $vuetify.goTo('#hero');
+                    "
+                >
                     <span class="mr-2">Inicio</span>
                 </v-btn>
-                <v-btn v-else text href="/home" class="sombra">
-                    <span class="mr-2">Inicio</span>
-                </v-btn>
-                <!--<v-btn text @click="$vuetify.goTo('#features')" class="sombra">
+                <v-btn v-if="isHome" text dark @click="$vuetify.goTo('#about')">
                     <span class="mr-2">Sobre</span>
-                </v-btn>-->
-                <v-btn text href="/listproducts" class="sombra">
+                </v-btn>
+                <v-btn
+                    v-if="isHome"
+                    text
+                    dark
+                    @click="$vuetify.goTo('#pricing')"
+                >
                     <span class="mr-2">Productos y servicios</span>
                 </v-btn>
-                <v-btn v-if="isHome" rounded outlined text @click="$vuetify.goTo('#contact')" class="sombra">
-                    <span class="mr-2">Contacto</span>
+                <v-btn text dark :to="{ name: 'list' }">
+                    <span class="mr-2">Catalogo</span>
                 </v-btn>
-                <v-btn v-else rounded outlined text href="/home/#contact" class="sombra">
+                <v-btn
+                    v-if="isHome"
+                    dark
+                    rounded
+                    outlined
+                    @click="$vuetify.goTo('#contact')"
+                >
                     <span class="mr-2">Contacto</span>
                 </v-btn>
             </div>
@@ -126,7 +124,7 @@
 }
 
 .sombra {
-    text-shadow: 1px 1px #020202;
+    color: #001d6e;
 }
 </style>
 
@@ -139,14 +137,9 @@ export default {
         isXs: false,
         items: [
             ["mdi-home-outline", "Inicio", "#hero"],
-            /*["mdi-information-outline", "Sobre", "#features"],*/
+            ["mdi-information-outline", "Sobre", "#features"],
             ["mdi-archive", "Productos y Servicios", "#pricing"],
             ["mdi-email-outline", "Contato", "#contact"],
-        ],
-        itemsNoHome: [
-            ["mdi-home-outline", "Inicio", "/home"],
-            ["mdi-archive", "Productos y Servicios", "/listproducts"],
-            ["mdi-email-outline", "Contato", "/home/#contact"],
         ],
     }),
     props: {
@@ -156,7 +149,7 @@ export default {
     methods: {
         ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         ...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 

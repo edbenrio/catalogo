@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/product.js": "/js/product.js",
     "/css/app.css": "/css/app.css",
     "/images/abgHero.jpg": "/images/abgHero.jpg",
     "/images/aeroplane.svg": "/images/aeroplane.svg",
@@ -31,5 +32,7 @@
     "/images/no-foto.png": "/images/no-foto.png",
     "/images/oxigeno.jpg": "/images/oxigeno.jpg",
     "/images/paperplane.svg": "/images/paperplane.svg",
-    "/images/wave2.svg": "/images/wave2.svg"
+    "/images/wave2.svg": "/images/wave2.svg",
+    "/images/ubicacion.png": "/images/ubicacion.png",
+    "/images/asd.jpeg": "/images/asd.jpeg"
 }
