@@ -4,6 +4,7 @@
     "/images/abgHero.jpg": "/images/abgHero.jpg",
     "/images/aeroplane.svg": "/images/aeroplane.svg",
     "/images/airplane.svg": "/images/airplane.svg",
+    "/images/alquilar.png": "/images/alquilar.png",
     "/images/bgDownload.jpg": "/images/bgDownload.jpg",
     "/images/bgDrawer.jpg": "/images/bgDrawer.jpg",
     "/images/bgHero.jpg": "/images/bgHero.jpg",
@@ -12,6 +13,7 @@
     "/images/bgMain.png": "/images/bgMain.png",
     "/images/borderWaves.svg": "/images/borderWaves.svg",
     "/images/borderWavesBlue.svg": "/images/borderWavesBlue.svg",
+    "/images/carritocompras.png": "/images/carritocompras.png",
     "/images/icon1.png": "/images/icon1.png",
     "/images/icon1.svg": "/images/icon1.svg",
     "/images/icon2.png": "/images/icon2.png",
@@ -23,13 +25,11 @@
     "/images/img/logo.png": "/images/img/logo.png",
     "/images/itapua medical.PNG": "/images/itapua medical.PNG",
     "/images/itapuamedical.png": "/images/itapuamedical.png",
+    "/images/local.jpeg": "/images/local.jpeg",
+    "/images/local.jpg": "/images/local.jpg",
     "/images/logo.png": "/images/logo.png",
     "/images/no-foto.png": "/images/no-foto.png",
     "/images/oxigeno.jpg": "/images/oxigeno.jpg",
     "/images/paperplane.svg": "/images/paperplane.svg",
-    "/images/wave2.svg": "/images/wave2.svg",
-    "/images/local.jpeg": "/images/local.jpeg",
-    "/images/local.jpg": "/images/local.jpg",
-    "/images/alquilar.png": "/images/alquilar.png",
-    "/images/carritocompras.png": "/images/carritocompras.png"
+    "/images/wave2.svg": "/images/wave2.svg"
 }

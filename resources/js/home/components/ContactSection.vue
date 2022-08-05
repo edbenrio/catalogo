@@ -28,7 +28,7 @@
                             </h3>
                         </v-col>
                         <v-col cols="12" sm="7">
-                            <a href="http://www.stackoverflow.com " target="_blank">
+                            <a href="https://www.google.com/maps/place/27%C2%B019'46.1%22S+55%C2%B052'16.1%22W/@-27.3294797,-55.8733233,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x16fa7d310937cb6e!8m2!3d-27.3294797!4d-55.8711346?hl=es" target="_blank">
                             <v-img :src="require('../assets/img/local.jpeg')"/>
                             </a>
                         </v-col>
