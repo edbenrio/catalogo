@@ -8,10 +8,10 @@
     <meta name="title" content="{{$product->nombre}}">
     <meta name="description" content="{{$product->descripcion}}">
     <meta property="og:title" content="{{$product->nombre}}">
-    <meta property="og:image" content="{{count($product->image)>0? '$product->image[0]->img_url' : '' }}">
+    <meta property="og:image" content="{{count($product->image)>0? url('/'). '/' .$product->image[0]->img_url : '' }}">
     <meta property="og:description" content="{{$product->descripcion}}">
-    <meta property="og:image_link" content="{{count($product->image)>0? '$product->image[0]->img_url' : '' }}">
-    <meta property="og:url" content="/products/{{$product->id}}">
+    <meta property="og:image_link" content="{{count($product->image)>0? url('/'). '/' .$product->image[0]->img_url : '' }}">
+    <meta property="og:url" content="{{url('/')}}/products/{{$product->id}}">
     <meta data-n-property="og:image:alt" content="{{$product->nombre}}">
 
     <title>{{$product->nombre}}</title>
