@@ -1,9 +1,5 @@
 @extends('layouts.product')
 @section('meta_head')
-    <meta property="og:url" content="DA QD">
-    <meta property="og:image" content="holaaa">
-    <meta property="og:description" content="{{ $product->descripcion }}"/>
-
     <meta name="og:site_name" property="og:site_name" content="Itapua Medical, Oxigeno medicinal">
     <meta name="title" content="{{$product->nombre}}">
     <meta name="description" content="{{$product->descripcion}}">
