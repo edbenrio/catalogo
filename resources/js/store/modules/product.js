@@ -101,7 +101,6 @@ const actions = {
     getOneProduct({ commit }, params) {
         axios.get(`/products/${params.id}`).then((response) => {
             commit("GET_ONE_PRODUCT", response.data);
-            console.log(response.data);
         });
     },
     buscarProductos({ state, commit }, buscador) {

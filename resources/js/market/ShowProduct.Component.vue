@@ -121,7 +121,11 @@
                     <v-btn fab class="mb-1 success" @click="goToWhatsapp">
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
-                    <v-btn fab class="mb-1 instagram text-white" @click="goToInsta">
+                    <v-btn
+                        fab
+                        class="mb-1 instagram text-white"
+                        @click="goToInsta"
+                    >
                         <v-icon>mdi-instagram </v-icon>
                     </v-btn>
                     <v-btn fab class="info text-white" @click="goToFace">
@@ -179,14 +183,18 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
+
 export default {
     data: () => ({
         carousel: "",
         desserts: {},
+        fab: false,
     }),
     components: {},
-    mounted() {
+    beforeMount() {
         this.getOneProduct(this.$route.params); //reemplazar con la ID del producto
+    },
+    mounted() {
         this.isHomePage();
     },
     computed: {
@@ -231,14 +239,13 @@ export default {
             // window.location.href = link;
         },
         goToInsta() {
-            let link =
-                "https://instagram.com" ;
+            let link = "https://instagram.com";
             window.open(link, "_blank");
             // window.location.href = link;
         },
         goToFace() {
             let link =
-                "https://facebook.com";
+                "https://www.facebook.com/sharer/sharer.php?u=http://localhost:8000/showproduct/3";
             window.open(link, "_blank");
             //window.location.href = link;
         },

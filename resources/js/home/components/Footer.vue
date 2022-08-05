@@ -1,5 +1,5 @@
 <template>
-    <v-footer dark padless v-if="isHome">
+    <v-footer dark padless>
         <v-card flat tile class="secondary white--text text-center">
             <v-card-text>
                 <v-btn

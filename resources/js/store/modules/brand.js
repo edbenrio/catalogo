@@ -86,7 +86,7 @@ const actions = {
                 dispatch("getBrands");
             })
             .catch((e) => {
-                console.log(e);
+                alert(error.response.data);
             });
     },
     deleteBrand({ commit, dispatch }, params) {
@@ -99,7 +99,6 @@ const actions = {
                 dispatch("getBrands");
             })
             .catch((error) => {
-                console.log(error.response.data);
                 alert(error.response.data);
             });
     },

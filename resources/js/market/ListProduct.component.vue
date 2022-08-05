@@ -15,11 +15,7 @@
                         >
                             <v-card
                                 class="my-3 mx-3 card-outter"
-                                @click="
-                                    $router.push({
-                                        path: `/showproduct/${product.id}`,
-                                    })
-                                "
+                                @click="goToLink(product)"
                             >
                                 <v-img
                                     :contain="true"
@@ -47,7 +43,7 @@
                                     v-if="product.precio"
                                     class="text-h5 mb-1"
                                 >
-                                    {{convertMoney(product.precio)}}
+                                    {{ convertMoney(product.precio) }}
                                 </v-card-subtitle>
 
                                 <v-card-text> </v-card-text>
@@ -107,6 +103,9 @@ export default {
                 currency: "PYG",
                 minimumFractionDigits: 0,
             });
+        },
+        goToLink(product) {
+            window.open(`/products/${product.id}`, "_parent");
         },
     },
 };

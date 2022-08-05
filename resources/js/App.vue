@@ -3,5 +3,4 @@
         <router-view></router-view>
     </v-fade-transition>
 </template>
-
 <script></script>
