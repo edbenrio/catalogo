@@ -9,15 +9,17 @@
         >
             <v-list>
                 <v-list-item>
-                    <v-list-item-avatar>
-                        <img
-                            :src="require('../assets/img/logo.png')"
-                            alt="Logo"
-                        />
-                    </v-list-item-avatar>
+                    <img
+                        width="250"
+                        height="75"
+                        :src="require('../assets/img/logo.png')"
+                        alt="Logo"
+                    />
+                </v-list-item>
+                <v-list-item>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >IDev</v-list-item-title
+                            >Itapua Medical</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>
@@ -27,10 +29,10 @@
 
             <v-list dense>
                 <v-list-item
-                    v-for="([icon, text, link], i) in items"
+                    v-for="([icon, text, link, linkTo], i) in lis"
                     :key="i"
                     link
-                    @click="$vuetify.goTo(link)"
+                    @click="!linkTo ? $vuetify.goTo(link) : isHomePage(linkTo)"
                 >
                     <v-list-item-icon class="justify-center">
                         <v-icon>{{ icon }}</v-icon>
@@ -73,7 +75,7 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div>
+            <div v-else>
                 <v-btn
                     text
                     dark
@@ -135,11 +137,17 @@ export default {
         searchProduct: "",
         drawer: null,
         isXs: false,
+        lis: [],
         items: [
             ["mdi-home-outline", "Inicio", "#hero"],
-            ["mdi-information-outline", "Sobre", "#features"],
+            ["mdi-information-outline", "Sobre", "#about"],
             ["mdi-archive", "Productos y Servicios", "#pricing"],
+            ["mdi-file-image", "Catalogo", "", "list"],
             ["mdi-email-outline", "Contato", "#contact"],
+        ],
+        itemsDrawer: [
+            ["mdi-home-outline", "Inicio", "", "home"],
+            ["mdi-file-image", "Catalogo", "", "list"],
         ],
     }),
     props: {
@@ -147,7 +155,6 @@ export default {
         flat: Boolean,
     },
     methods: {
-        ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
             this.isXs = window.innerWidth < 1300;
         },
@@ -156,9 +163,12 @@ export default {
         ...mapActions("product", ["getProducts", "buscarProductos"]),
 
         goToProductList() {
-            const path = `/listproducts`;
-            if (this.$route.path !== path) this.$router.push(path);
+            const path = `list`;
+            if (this.$route.name !== path) this.$router.push({ name: path });
             this.setIsHomePasive();
+        },
+        isHomePage(path) {
+            if (this.$route.name !== path) this.$router.push({ name: path });
         },
     },
 
@@ -170,10 +180,19 @@ export default {
                 }
             }
         },
+        $route() {
+            this.$route.name === "list"
+                ? (this.lis = this.itemsDrawer)
+                : (this.lis = this.items);
+        },
     },
     mounted() {
         this.onResize();
         window.addEventListener("resize", this.onResize, { passive: true });
+
+        this.$route.name === "list"
+            ? (this.lis = this.itemsDrawer)
+            : (this.lis = this.items);
     },
     computed: {
         ...mapState("app", ["isHome"]),
