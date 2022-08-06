@@ -240,12 +240,12 @@ export default {
             // window.location.href = link;
         },
         goToInsta() {
-            let link = "https://instagram.com";
+            let link = "//www.instagram.com/itapua_medical/";
             window.open(link, "_blank");
             // window.location.href = link;
         },
         goToFace() {
-            let link = "https://facebook.com";
+            let link = "https://www.facebook.com/oxigeno.electromedicina.7";
             window.open(link, "_blank");
             //window.location.href = link;
         },
