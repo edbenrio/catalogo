@@ -67,7 +67,7 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div>
+            <div v-else>
                 <v-btn text href="/home" class="sombra">
                     <span class="mr-2">Inicio</span>
                 </v-btn>
@@ -119,7 +119,7 @@ export default {
     methods: {
         // ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         /*...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 
