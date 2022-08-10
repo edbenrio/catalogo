@@ -17,7 +17,7 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >IDev</v-list-item-title
+                            >Itapúa Medical</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>
@@ -44,29 +44,27 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar app color="#01579B" :flat="true" dark class="px-15">
+        <v-app-bar color="#01579B" :flat="true" dark class="px-15 d-none d-md-block">
+        <div></div>    
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
                     max-width="180px"
                 />
             </v-toolbar-title>
-            <template>
+           <template>
                 <v-text-field
                     class="mx-7 mt-3"
                     v-model="searchProduct"
                     label="Buscar"
+                    dark
                     @keyup="buscarProductos(searchProduct)"
                     @click="goToProductList"
                     placeholder="Buscar Producto"
                 ></v-text-field>
             </template>
             <v-spacer />
-            <v-app-bar-nav-icon
-                @click.stop="drawer = !drawer"
-                class="mr-4"
-                v-if="isXs"
-            />
+           
             <div>
                 <v-btn text href="/home" class="sombra">
                     <span class="mr-2">Inicio</span>
@@ -75,8 +73,31 @@
                     <span class="mr-2">Catalogo</span>
                 </v-btn>
             </div>
-        </v-app-bar>
+        </v-app-bar> 
+        
+        <v-app-bar color="#01579B" :flat="true" dark class="px-15 d-block d-md-none fixed-top">
+        <div></div>    
+           <template>
+                <v-text-field
+                    class="mx-7 mt-3"
+                    v-model="searchProduct"
+                    label="Buscar"
+                    dark
+                    @keyup="buscarProductos(searchProduct)"
+                    @click="goToProductList"
+                    placeholder="Buscar Producto"
+                ></v-text-field>
+            </template>
+        </v-app-bar> 
+
+        <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+            class="mr-4 d-block d-md-none fixed-top"
+            dark
+        />
+
     </div>
+
 </template>
 
 <style scoped>

@@ -17,7 +17,7 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >IDev</v-list-item-title
+                            >Itapúa Medical</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>
@@ -48,7 +48,7 @@
             app
             :color="color"
             :flat="flat"
-            class="px-15"
+            class="px-15 d-none d-md-block"            
             :class="{ expand: flat }"
         >
             <v-toolbar-title>
@@ -61,6 +61,7 @@
                 <v-text-field
                     class="mx-7 mt-3"
                     v-model="searchProduct"
+                    dark
                     label="Buscar"
                     @keyup="buscarProductos(searchProduct)"
                     @click="goToProductList"
@@ -68,11 +69,7 @@
                 ></v-text-field>
             </template>
             <v-spacer />
-            <v-app-bar-nav-icon
-                @click.stop="drawer = !drawer"
-                class="mr-4"
-                v-if="isXs"
-            />
+            
             <div>
                 <v-btn
                     text
@@ -86,7 +83,7 @@
                     <span class="mr-2">Inicio</span>
                 </v-btn>
                 <v-btn v-if="isHome" text dark @click="$vuetify.goTo('#about')">
-                    <span class="mr-2">Sobre</span>
+                    <span class="mr-2">Nosotros</span>
                 </v-btn>
                 <v-btn
                     v-if="isHome"
@@ -110,6 +107,31 @@
                 </v-btn>
             </div>
         </v-app-bar>
+
+        <v-app-bar
+            app
+            :color="color"
+            :flat="flat"
+            class="px-15 d-block d-md-none fixed-top"            
+        >
+            <template>
+                <v-text-field
+                    class="mx-7 mt-3"
+                    v-model="searchProduct"
+                    dark
+                    label="Buscar"
+                    @keyup="buscarProductos(searchProduct)"
+                    @click="goToProductList"
+                    placeholder="Buscar Producto"
+                ></v-text-field>
+            </template>
+        </v-app-bar>
+
+        <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+            class="mr-4 d-block d-md-none fixed-top"
+            dark
+        />
     </div>
 </template>
 
@@ -126,6 +148,11 @@
 .sombra {
     color: #001d6e;
 }
+
+.v-application--is-ltr .v-text-field .v-label {
+    color: rgb(255 255 255 / 60%);
+}
+
 </style>
 
 <script>
@@ -137,7 +164,7 @@ export default {
         isXs: false,
         items: [
             ["mdi-home-outline", "Inicio", "#hero"],
-            ["mdi-information-outline", "Sobre", "#features"],
+            ["mdi-information-outline", "Nosotros", "#features"],
             ["mdi-archive", "Productos y Servicios", "#pricing"],
             ["mdi-email-outline", "Contato", "#contact"],
         ],
