@@ -8,28 +8,33 @@
                             <h1 class="font-weight-light display-1">
                                 Contacto
                             </h1>
-                            <h3 class="font-weight-light mt-3">
-                                Para una mejor atencion contacte con 
-                                nosotros a traves de Whatsapp o 
-                                llamadas telefonicas 
+                            <h3 class="font-weight-light mt-3 centrado">
+                                Para una mejor atención contacte con nosotros a
+                                través de WhatsApp o llamadas telefónicas
                             </h3>
-                            <h3 class="font-weight-light mt-3">
-                                Tambien nos puede encontrar sobre 
-                                25 de mayo esquina c/antequera 
-                                Edificio Bolshoi planta baja sobre 
-                                25 de mayo Encarnacion-Paraguay 
+                            <h3 class="font-weight-light mt-3 centrado">
+                                También nos puede encontrar sobre 25 de Mayo
+                                esquina c/Antequera Edificio Bolshoi planta baja
+                                sobre 25 de Mayo Encarnación-Paraguay
                             </h3>
-                            <h3 class="font-weight-light mt-3">
-                                Telefono: +595 985 252921<br/>
+                            <h3 class="font-weight-light mt-3 centrado">
+                                Telefono: +595 985 252921<br />
                                 Telefono: +595 985 373100
                             </h3>
-                            <h3 class="font-weight-light">
+                            <h3 class="font-weight-light centrado">
                                 Email: itapuamedical@gmail.com
                             </h3>
                         </v-col>
                         <v-col cols="12" sm="7">
-                            <a href="http://www.stackoverflow.com " target="_blank">
-                            <v-img :src="require('../assets/img/local.jpeg')"/>
+                            <a
+                                href="https://www.google.com/maps/place/27%C2%B019'46.1%22S+55%C2%B052'16.1%22W/@-27.3294797,-55.8733233,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x16fa7d310937cb6e!8m2!3d-27.3294797!4d-55.8711346?hl=es"
+                                target="_blank"
+                            >
+                                <img
+                                    :src="
+                                        require('../assets/img/ubicacion.png')
+                                    "
+                                />
                             </a>
                         </v-col>
                     </v-row>
@@ -60,6 +65,9 @@
 <style scoped>
 #contact {
     background-color: #f4f7f5;
+}
+.centrado {
+    text-align: center;
 }
 
 .svg-border-waves .v-image {

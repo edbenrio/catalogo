@@ -18,16 +18,16 @@
                                 <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
                                         Nuestra principal actividad se centra en el campo de la sanidad y salud.
-                                        Somos importadores, distribuidores de dispositivos médicos, materiales 
-                                        cortopunzantes y equipos de proteccion individual.
+                                        Somos importadores, distribuidores de dispositivos médicos, materiales
+                                        cortopunzantes y equipos de protección individual.
                                     </p>
                                 </v-col>
                                 <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
                                         Taller de servicio de mantenimiento técnico. Especializados en equipos de 
-                                        oxigeno medicinal, aspiraciones y apnea.
-                                        Distribuidores y servicio técnico de plantas de oxigeno Medicinal (PSA)
-                                        de la firma <b>SYSADVANCE</b>
+                                        oxígeno medicinal, aspiraciones y apnea.
+                                        Distribuidores y servicio técnico de plantas de oxígeno Medicinal (PSA) 
+                                        de la firma  <b>SYSADVANCE</b>
                                     </p>
                                 </v-col>
                             </v-row>

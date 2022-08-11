@@ -40,11 +40,11 @@ export default {
         icons: [
             {
                 text: "mdi-facebook",
-                link: "",
+                link: "https://www.facebook.com/oxigeno.electromedicina.7",
             },
             {
                 text: "mdi-instagram",
-                link: "",
+                link: "https://www.instagram.com/itapua_medical/",
             },
         ],
     }),
