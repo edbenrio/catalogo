@@ -17,7 +17,7 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >IDev</v-list-item-title
+                            >Itapúa Medical</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>
@@ -44,7 +44,13 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar app color="#01579B" :flat="true" dark class="px-15">
+        <v-app-bar
+            color="#01579B"
+            :flat="true"
+            dark
+            class="px-15 d-none d-md-block"
+        >
+            <div></div>
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
@@ -56,6 +62,7 @@
                     class="mx-7 mt-3"
                     v-model="searchProduct"
                     label="Buscar"
+                    dark
                     @keyup="buscarProductos(searchProduct)"
                     @click="goToProductList"
                     placeholder="Buscar Producto"
@@ -67,7 +74,7 @@
                 class="mr-4"
                 v-if="isXs"
             />
-            <div>
+            <div v-else>
                 <v-btn text href="/home" class="sombra">
                     <span class="mr-2">Inicio</span>
                 </v-btn>
@@ -76,6 +83,32 @@
                 </v-btn>
             </div>
         </v-app-bar>
+
+        <v-app-bar
+            color="#01579B"
+            :flat="true"
+            dark
+            class="px-15 d-block d-md-none fixed-top"
+        >
+            <div></div>
+            <template>
+                <v-text-field
+                    class="mx-7 mt-3"
+                    v-model="searchProduct"
+                    label="Buscar"
+                    dark
+                    @keyup="buscarProductos(searchProduct)"
+                    @click="goToProductList"
+                    placeholder="Buscar Producto"
+                ></v-text-field>
+            </template>
+        </v-app-bar>
+
+        <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+            class="mr-4 d-block d-md-none fixed-top"
+            dark
+        />
     </div>
 </template>
 
@@ -119,7 +152,7 @@ export default {
     methods: {
         // ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         /*...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 

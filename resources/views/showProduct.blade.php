@@ -9,7 +9,7 @@
     <meta property="og:image_link" content="{{count($product->image)>0? url('/'). '/' .$product->image[0]->img_url : '' }}">
     <meta property="og:url" content="{{url('/')}}/products/{{$product->id}}">
     <meta data-n-property="og:image:alt" content="{{$product->nombre}}">
-
+    <meta property="og:type" content="article" />
     <title>{{$product->nombre}}</title>
 @endsection
 @section('content')    
