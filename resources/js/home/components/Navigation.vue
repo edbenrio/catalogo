@@ -170,7 +170,7 @@ export default {
         lis: [],
         items: [
             ["mdi-home-outline", "Inicio", "#hero"],
-            ["mdi-information-outline", "Nosotros", "#features"],
+            ["mdi-information-outline", "Nosotros", "#about"],
             ["mdi-archive", "Productos y Servicios", "#pricing"],
             ["mdi-file-image", "Catalogo", "", "list"],
             ["mdi-email-outline", "Contato", "#contact"],
