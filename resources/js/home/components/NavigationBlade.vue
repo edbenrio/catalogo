@@ -44,15 +44,20 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar color="#01579B" :flat="true" dark class="px-15 d-none d-md-block">
-        <div></div>    
+        <v-app-bar
+            color="#01579B"
+            :flat="true"
+            dark
+            class="px-15 d-none d-md-block"
+        >
+            <div></div>
             <v-toolbar-title>
                 <v-img
                     :src="require('../assets/img/logo.png')"
                     max-width="180px"
                 />
             </v-toolbar-title>
-           <template>
+            <template>
                 <v-text-field
                     class="mx-7 mt-3"
                     v-model="searchProduct"
@@ -64,8 +69,12 @@
                 ></v-text-field>
             </template>
             <v-spacer />
-           
-            <div>
+            <v-app-bar-nav-icon
+                @click.stop="drawer = !drawer"
+                class="mr-4"
+                v-if="isXs"
+            />
+            <div v-else>
                 <v-btn text href="/home" class="sombra">
                     <span class="mr-2">Inicio</span>
                 </v-btn>
@@ -73,11 +82,16 @@
                     <span class="mr-2">Catalogo</span>
                 </v-btn>
             </div>
-        </v-app-bar> 
-        
-        <v-app-bar color="#01579B" :flat="true" dark class="px-15 d-block d-md-none fixed-top">
-        <div></div>    
-           <template>
+        </v-app-bar>
+
+        <v-app-bar
+            color="#01579B"
+            :flat="true"
+            dark
+            class="px-15 d-block d-md-none fixed-top"
+        >
+            <div></div>
+            <template>
                 <v-text-field
                     class="mx-7 mt-3"
                     v-model="searchProduct"
@@ -88,16 +102,14 @@
                     placeholder="Buscar Producto"
                 ></v-text-field>
             </template>
-        </v-app-bar> 
+        </v-app-bar>
 
         <v-app-bar-nav-icon
             @click.stop="drawer = !drawer"
             class="mr-4 d-block d-md-none fixed-top"
             dark
         />
-
     </div>
-
 </template>
 
 <style scoped>
@@ -140,7 +152,7 @@ export default {
     methods: {
         // ...mapMutations("app", ["setIsHomeActive", "setIsHomePasive"]),
         onResize() {
-            this.isXs = window.innerWidth < 850;
+            this.isXs = window.innerWidth < 1300;
         },
         /*...mapMutations("app", ["setIsHomePasive", "setIsHomeActive"]),
 
