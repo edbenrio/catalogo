@@ -32,7 +32,7 @@
                             >
                                 <img
                                     :src="
-                                        require('../assets/img/local.jpeg')
+                                        require('../assets/img/ubicacion.png')
                                     "
                                 />
                             </a>
