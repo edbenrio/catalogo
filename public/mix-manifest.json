@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/product.js": "/js/product.js",
     "/css/app.css": "/css/app.css",
+    "/images/admin/marca/674466979bd5d.png": "/images/admin/marca/674466979bd5d.png",
     "/images/aeroplane.svg": "/images/aeroplane.svg",
     "/images/airplane.svg": "/images/airplane.svg",
     "/images/alquilar.png": "/images/alquilar.png",
@@ -13,6 +14,7 @@
     "/images/borderWaves.svg": "/images/borderWaves.svg",
     "/images/borderWavesBlue.svg": "/images/borderWavesBlue.svg",
     "/images/carritocompras.png": "/images/carritocompras.png",
+    "/images/fondo.jpg": "/images/fondo.jpg",
     "/images/icon1.png": "/images/icon1.png",
     "/images/icon1.svg": "/images/icon1.svg",
     "/images/icon2.png": "/images/icon2.png",
@@ -23,12 +25,10 @@
     "/images/ill2.svg": "/images/ill2.svg",
     "/images/img/logo.png": "/images/img/logo.png",
     "/images/logo.png": "/images/logo.png",
+    "/images/map.jpeg": "/images/map.jpeg",
     "/images/no-foto.png": "/images/no-foto.png",
     "/images/oxigeno.jpg": "/images/oxigeno.jpg",
     "/images/paperplane.svg": "/images/paperplane.svg",
     "/images/ubicacion.png": "/images/ubicacion.png",
-    "/images/wave2.svg": "/images/wave2.svg",
-    "/images/fondo.jpg": "/images/fondo.jpg",
-    "/images/mapa.jpeg": "/images/mapa.jpeg",
-    "/images/map.jpeg": "/images/map.jpeg"
+    "/images/wave2.svg": "/images/wave2.svg"
 }
