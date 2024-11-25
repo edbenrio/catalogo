@@ -5,21 +5,21 @@
             app
             temporary
             dark
-            :src="require('../assets/img/bgDrawer.jpg')"
+            src="require('../assets/img/bgDrawer.jpg')"
         >
             <v-list>
                 <v-list-item>
                     <img
                         width="250"
                         height="75"
-                        :src="require('../assets/img/logo.png')"
+                        src="/images/img/logo.png"
                         alt="Logo"
                     />
                 </v-list-item>
                 <v-list-item>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >Itapúa Medical</v-list-item-title
+                            >Catalogo</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>
@@ -55,8 +55,8 @@
         >
             <v-toolbar-title>
                 <v-img
-                    :src="require('../assets/img/logo.png')"
-                    max-width="180px"
+                    src="/images/img/logo.png"
+                    max-width="65px"
                 />
             </v-toolbar-title>
             <template>

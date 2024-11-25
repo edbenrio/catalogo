@@ -1,6 +1,6 @@
 @extends('layouts.product')
 @section('meta_head')
-    <meta name="og:site_name" property="og:site_name" content="Itapua Medical, Oxigeno medicinal">
+    <meta name="og:site_name" property="og:site_name" content="Catalogo">
     <meta name="title" content="{{$product->nombre}}">
     <meta name="description" content="{{$product->descripcion}}">
     <meta property="og:title" content="{{$product->nombre}}">

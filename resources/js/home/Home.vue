@@ -15,7 +15,7 @@
                         bottom
                         right
                         color="#25D366"
-                        href="https://wa.me/595985373100?text=Estoy interesado en sus productos"
+                        href="https://wa.me/595995360910?text=Estoy interesado en sus productos"
                         target="_blank"
                         v-bind="attrs"
                         v-on="on"
@@ -23,7 +23,7 @@
                         <v-icon>mdi-whatsapp</v-icon>
                     </v-btn>
                 </template>
-                <span>Contactenos con Itapua Medical</span>
+                <span>Contactar por WhatsApp</span>
             </v-tooltip>
         </v-scale-transition>
         <foote />

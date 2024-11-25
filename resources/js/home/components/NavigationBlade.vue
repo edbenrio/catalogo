@@ -17,7 +17,7 @@
                     </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title"
-                            >Itapúa Medical</v-list-item-title
+                            >Catalogo</v-list-item-title
                         >
                     </v-list-item-content>
                 </v-list-item>

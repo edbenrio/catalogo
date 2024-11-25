@@ -2,20 +2,17 @@
     <section id="hero">
         <v-parallax
             dark
-            v-bind:src="require('../assets/img/bgHero.jpg')"
+            src="/images/fondo.jpg"
             height="750"
         >
             <v-row align="center" justify="center">
                 <v-col cols="10">
                     <v-row align="center" justify="center">
                         <h1 class="display-2 font-weight-bold mb-4 sombra">
-                            Oxigeno Medicinal
+                            Lorem, ipsum.
                         </h1>
                         <h1 class="font-weight-light sombra">
-                            ·Electromedicina<br />
-                            ·Oxigenoterapia
-                            <br />
-                            ·Apnea del sueño
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure architecto, ad explicabo itaque rerum sunt ipsum ipsam. Ex, dolore magni.
                         </h1>
                     </v-row>
                 </v-col>

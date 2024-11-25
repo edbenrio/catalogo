@@ -32,19 +32,19 @@
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Concentrador de Oxigeno
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Aspiradores de secreciones
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Apnea del sueño
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Insumos y descartables
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         
@@ -87,19 +87,19 @@
                                         <div
                                             class="text--disabled text-uppercase text-h5 my-2"
                                         >
-                                            Alquiler
+                                            Alquilar
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Concentrador de Oxigeno
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Aspiradores de secreciones
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">
-                                            Apnea del sueño
+                                            Lorem, ipsum dolor.
                                         </div>
                                         <v-divider class="my-2" />
                                         <div class="text-uppercase blue--text">

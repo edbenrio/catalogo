@@ -9,31 +9,27 @@
                                 Contacto
                             </h1>
                             <h3 class="font-weight-light mt-3 centrado">
-                                Para una mejor atención contacte con nosotros a
-                                través de WhatsApp o llamadas telefónicas
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nihil saepe, sint voluptatum optio necessitatibus.
                             </h3>
                             <h3 class="font-weight-light mt-3 centrado">
-                                También nos puede encontrar sobre 25 de Mayo
-                                esquina c/Antequera Edificio Bolshoi planta baja
-                                sobre 25 de Mayo Encarnación-Paraguay
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur suscipit ex laudantium.
                             </h3>
                             <h3 class="font-weight-light mt-3 centrado">
-                                Telefono: +595 985 252921<br />
-                                Telefono: +595 985 373100
+                                Telefono: +1 123 456789<br />
+                                Telefono: +1 123 456123
                             </h3>
                             <h3 class="font-weight-light centrado">
-                                Email: itapuamedical@gmail.com
+                                Email: asdfasdfasd@gmail.com
                             </h3>
                         </v-col>
                         <v-col cols="12" sm="7">
                             <a
-                                href="https://www.google.com/maps/place/27%C2%B019'46.1%22S+55%C2%B052'16.1%22W/@-27.3294797,-55.8733233,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x16fa7d310937cb6e!8m2!3d-27.3294797!4d-55.8711346?hl=es"
+                                href="https://maps.app.goo.gl/N9xx7aVQRudoZpYK8"
                                 target="_blank"
                             >
                                 <img
-                                    :src="
-                                        require('../assets/img/ubicacion.png')
-                                    "
+                                    width="80%"
+                                    src="/images/map.jpeg"
                                 />
                             </a>
                         </v-col>

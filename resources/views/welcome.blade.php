@@ -4,21 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Itapúa Medical</title>
+        <title>Catálogo</title>
 
-        <meta name="og:site_name" property="og:site_name" content="Itapúa Medical, Oxígeno medicinal">
-        <meta name="title" content="Itapúa Medical">
-        <meta name="description" content="Nuestra principal actividad se centra en el campo de la sanidad y salud. Somos importadores, distribuidores de dispositivos médicos, materiales cortopunzantes y equipos de proteccion individual.
-
-            Taller de servicio de mantenimiento técnico. Especializados en equipos de oxigeno medicinal, aspiraciones y apnea. Distribuidores y servicio técnico de plantas de oxigeno Medicinal (PSA) de la firma SYSADVANCE">
-        <meta property="og:title" content="Itapúa Medical">
-        <meta property="og:image" content="{{url('/'). '/images/bgHero.jpg'}}">
-        <meta property="og:description" content="Nuestra principal actividad se centra en el campo de la sanidad y salud. Somos importadores, distribuidores de dispositivos médicos, materiales cortopunzantes y equipos de proteccion individual.
-
-            Taller de servicio de mantenimiento técnico. Especializados en equipos de oxigeno medicinal, aspiraciones y apnea. Distribuidores y servicio técnico de plantas de oxigeno Medicinal (PSA) de la firma SYSADVANCE">
-        <meta property="og:image_link" content="{{url('/'). '/images/bgHero.jpg'}}">
-        <meta property="og:url" content="{{url('/'). '/images/bgHero.jpg'}}">
-        <meta data-n-property="og:image:alt" content="Itapúa Medical, Oxígeno medicinal">
+        <meta name="og:site_name" property="og:site_name" content="Catálogo">
+        <meta name="title" content="Catálogo">
+        
+        <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, ratione! Quod magnam ipsam odit. Neque quod maiores, earum porro consequuntur eveniet voluptate a id maxime enim molestias magni sed, nam accusantium dicta laborum consectetur optio.">
+        <meta property="og:title" content="Catálogo">
+        <meta property="og:description" content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni qui assumenda corporis expedita illum error eius accusantium animi repudiandae, porro impedit ex maiores praesentium amet sed veritatis labore nesciunt sunt.">
+        <meta data-n-property="og:image:alt" content="Catálogo">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

@@ -21,7 +21,7 @@
             <v-divider></v-divider>
 
             <v-card-text class="white--text">
-                {{ new Date().getFullYear() }} — <strong>IDev</strong>
+                2022 — <strong>Edgar Cano M.</strong>
             </v-card-text>
         </v-card>
     </v-footer>
@@ -40,11 +40,11 @@ export default {
         icons: [
             {
                 text: "mdi-facebook",
-                link: "https://www.facebook.com/oxigeno.electromedicina.7",
+                link: "https://www.facebook.com/edgarrubendario",
             },
             {
                 text: "mdi-instagram",
-                link: "https://www.instagram.com/itapua_medical/",
+                link: "https://www.instagram.com/edcano.dev/",
             },
         ],
     }),

@@ -7,27 +7,22 @@
                         <v-col cols="12" md="7">
                             <h1 class="font-weight-light display-2">Mas sobre nosotros</h1>
                             <h1 class="font-weight-light display-1 mb-3">
-                                Itapúa Medical S.A
+                                Lorem, ipsum dolor.
                             </h1>
                             <v-row>
                                 <v-col cols="12" class="d-flex align-center subtittle">
                                     <p class="text-justify">
-                                        Empresa fundada en el año 2013.
+                                        Lorem ipsum dolor sit amet consectetur.
                                     </p>
                                 </v-col>
                                 <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
-                                        Nuestra principal actividad se centra en el campo de la sanidad y salud.
-                                        Somos importadores, distribuidores de dispositivos médicos, materiales
-                                        cortopunzantes y equipos de protección individual.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dignissimos modi in dolores sapiente nemo similique minus totam deserunt facilis.
                                     </p>
                                 </v-col>
                                 <v-col cols="12" class="d-flex align-center size">
                                     <p class="text-justify">
-                                        Taller de servicio de mantenimiento técnico. Especializados en equipos de 
-                                        oxígeno medicinal, aspiraciones y apnea.
-                                        Distribuidores y servicio técnico de plantas de oxígeno Medicinal (PSA) 
-                                        de la firma  <b>SYSADVANCE</b>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, soluta corrupti neque doloribus saepe eaque quo facilis architecto facere! Minima atque amet, repellat, architecto dignissimos dolore aut eveniet ea iure distinctio saepe! Error, laborum provident?
                                     </p>
                                 </v-col>
                             </v-row>
